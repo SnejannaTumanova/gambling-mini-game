@@ -6,7 +6,7 @@
 
 ## 🚀 Demo
 
-👉 
+👉 https://snejannatumanova.github.io/gambling-mini-game/
 
 ---
 
@@ -72,18 +72,31 @@
 
 ## 🛠️ Tech
 
-- Cocos Creator 3.x
+- Cocos Creator 3.8.6
 - TypeScript
-- Tween animations
+- FSM (Finite State Machine)
+- Tween-based animation system
+- GitHub Pages (CI/CD via GitHub Actions)
 
 ---
 
+## 🏗️ Design Decisions
+
+- Логика полностью отделена от визуала
+- Wheel не влияет на результат (детерминированность)
+- FSM используется для управления состояниями
+- UI не содержит бизнес-логики
+
+ ---
+
 ## 📦 Как запустить
 
+1. Клонировать репозиторий
 ```bash
-npm install
+git clone https://github.com/SnejannaTumanova/gambling-mini-game.git
 ```
-Открыть проект в Cocos Creator
+Открыть проект в Cocos Creator 3.8.6
+Нажать Preview
 
 ---
 
