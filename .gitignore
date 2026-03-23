@@ -1,0 +1,53 @@
+# =========================
+# Cocos Creator
+# =========================
+library/
+temp/
+local/
+build/
+profiles/
+native/
+.settings/
+*.log
+
+# Auto generated
+sys/
+bin/
+obj/
+
+# =========================
+# Node / NPM
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE
+# =========================
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# =========================
+# Build artifacts (важно)
+# =========================
+dist/
+release/
+
+# =========================
+# Misc
+# =========================
+*.zip
+*.tar
+*.rar
