@@ -10,6 +10,8 @@ import {
 } from 'cc';
 import { BetType } from '../data/Types';
 import { GameConfig } from '../data/GameConfig';
+import { eventBus } from '../core/EventBus';
+import { GameEvents } from '../core/GameEvents';
 
 const { ccclass, property } = _decorator;
 
@@ -28,6 +30,8 @@ export class WheelController extends Component {
 	wheelParticles: ParticleSystem2D = null!; // я пыталась добавить частицы, но не получилось, а блок кода остался
 
 	private isSpinning: boolean = false; // guard - защита от повторного запуска
+	private currentOutcome: any;
+	private prevBalance: number = 0;
 
 	private readonly sectors: BetType[] = [
 		'red',
@@ -50,41 +54,46 @@ export class WheelController extends Component {
 
 			opacity.opacity = 80; // при старте прозрачность 80, чтобы при запуске концентрировать внимание на яркости
 		}
+		eventBus.on(GameEvents.ROUND_STARTED, this.onRoundStarted, this);
 	}
 
-	spinTo(resultType: BetType, onComplete: () => void) {
-		if (this.isSpinning) return; // нельзя крутить повторно
+	private onRoundStarted({ outcome, prevBalance }: any) {
+		this.currentOutcome = outcome;
+		this.prevBalance = prevBalance;
 
-		this.isSpinning = true; // блокируем UI
+		this.spinTo(outcome.resultType);
+	}
 
-		this.startGlow(); // включаем эффекты
+	spinTo(resultType: BetType) {
+		if (this.isSpinning) return;
 
-		const rotation = this.calculateRotationForType(resultType); // считаем угол
+		this.isSpinning = true;
 
-		// колесо в дефолтном положении
+		this.startGlow();
+
+		const rotation = this.calculateRotationForType(resultType);
+
 		this.wheel.setRotationFromEuler(0, 0, 0);
-		this.wheel.setScale(new Vec3(1, 1, 1));
-
-		Tween.stopAllByTarget(this.wheel); // удаляем старые анимации
+		Tween.stopAllByTarget(this.wheel);
 
 		tween(this.wheel)
 			.to(
 				2.5,
 				{ eulerAngles: new Vec3(0, 0, rotation) },
-				{ easing: 'cubicOut' }, // вращение на вычесленный угол, причём сначала быстрее, потом медленее
+				{ easing: 'cubicOut' },
 			)
 			.call(() => {
-				this.playPointerBounce(); // стрелочка дёргается
-				this.stopGlow(); // фон останавливается
+				this.playPointerBounce();
 
-				tween(this.wheel) // лёгкий удар колеса при остановке
-					.to(0.05, { scale: new Vec3(1.03, 1.03, 1) })
-					.to(0.05, { scale: new Vec3(1, 1, 1) })
-					.call(() => {
-						this.isSpinning = false; // разблокируем UI
-						onComplete(); // сообщаем GameManager
-					})
-					.start();
+				// 👉 ВАЖНО: остановить glow
+				this.stopGlow();
+
+				this.isSpinning = false;
+
+				eventBus.emit(GameEvents.WHEEL_SPIN_COMPLETED, {
+					outcome: this.currentOutcome,
+					prevBalance: this.prevBalance,
+				});
 			})
 			.start();
 	}

@@ -15,6 +15,10 @@ import {
 } from 'cc';
 import { BetType } from '../data/Types';
 import { GameConfig } from '../data/GameConfig';
+import { eventBus } from '../core/EventBus';
+import { GameEvents } from '../core/GameEvents';
+import { GameFlowState } from '../core/GameFlowState';
+import { gameStore } from '../core/GameStore';
 
 const { ccclass, property } = _decorator;
 
@@ -40,27 +44,49 @@ export class UIController extends Component {
 	@property(Node) coinsRoot: Node = null!;
 	@property(Prefab) coinPrefab: Prefab = null!;
 
-	@property(AudioSource) winSound: AudioSource = null!;
-	@property(AudioSource) loseSound: AudioSource = null!;
-	@property(AudioSource) clickSound: AudioSource = null!;
-
 	private currentBalance: number = 0;
 	private currentBet: number = 0;
 	private selectedColor: BetType | null = 'red';
 	private isInteractionEnabled: boolean = true;
 
 	start() {
-		this.hideResult(); // сркываем мод окно результата
-		this.playIdleAnimation(); // дыхвние кнопки PLAY
+		// подписки на store
+		eventBus.on(GameEvents.BALANCE_CHANGED, this.updateBalance, this);
+		eventBus.on(GameEvents.BET_UPDATED, this.updateBet, this);
+		eventBus.on(GameEvents.COLOR_UPDATED, this.updateSelectedColor, this);
 
-		this.overlayBlocker && (this.overlayBlocker.active = false); // выключаем оверлей
+		eventBus.on(GameEvents.RESULT_READY, this.onResultReady, this);
+		eventBus.on(GameEvents.RESULT_HIDDEN, this.hideResult, this);
+		eventBus.on(GameEvents.STATE_CHANGED, this.onStateChanged, this);
 
-		this.updateSelectedColor(this.selectedColor); // выбранный цвет анимируется (по умолчанию красный)
+		this.hideResult();
+		this.playIdleAnimation();
 
-		this.addHoverEffect(this.playButton);
-		this.addHoverEffect(this.resetBetButton);
-		this.addHoverEffect(this.add10Button);
-		this.addHoverEffect(this.add50Button);
+		this.overlayBlocker && (this.overlayBlocker.active = false);
+
+		this.updateBalance(gameStore.getBalance());
+		this.updateBet(gameStore.getBet().amount);
+		this.updateSelectedColor(gameStore.getBet().type);
+	}
+
+	private onResultReady({ isWin, amount, prevBalance, newBalance }: any) {
+		if (isWin) {
+			this.animateBalance(prevBalance, newBalance);
+		} else {
+			this.updateBalance(newBalance);
+		}
+
+		this.showResult(isWin, amount);
+	}
+
+	private onStateChanged(state: GameFlowState) {
+		const isIdle = state === GameFlowState.IDLE;
+
+		this.setInteractionEnabled(isIdle);
+
+		if (state === GameFlowState.SPINNING) {
+			this.hideResult();
+		}
 	}
 
 	// =====================
@@ -120,8 +146,6 @@ export class UIController extends Component {
 
 	showResult(isWin: boolean, amount: number) {
 		this.resultRoot.active = true; //включаем popup результата.
-
-		isWin ? this.winSound?.play() : this.loseSound?.play(); // нужный звук, ?. = если он есть
 
 		this.animateResultBackground();
 
@@ -321,8 +345,6 @@ export class UIController extends Component {
 			this.refreshBetControls(); // корректировка по доступности кнопок увеличения ставки
 		}
 
-		this.updateSelectedColor(enabled ? this.selectedColor : null); // и снова активируем дыхание выбранного цвета, после разблок
-
 		this.handleOverlay(enabled);
 	}
 
@@ -450,10 +472,5 @@ export class UIController extends Component {
 				.call(() => coin.destroy()) //после окончания анимации удаляется
 				.start();
 		}
-	}
-
-	playClick() {
-		this.clickSound?.stop(); // останавливаем текущий clickSound
-		this.clickSound?.play(); // запускаем заново, чтобы короткий звук клика всегда начинался с начала и не наслаивался неаккуратно при частых нажатиях
 	}
 }

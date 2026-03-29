@@ -1,31 +1,53 @@
-import { _decorator, Component, AudioSource, input, Input } from 'cc';
+import { _decorator, Component, input, Input } from 'cc';
+import { eventBus } from '../core/EventBus';
+import { GameEvents } from '../core/GameEvents';
+import { audioService } from '../services/AudioService';
 
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
 
 @ccclass('AudioController')
 export class AudioController extends Component {
-	@property(AudioSource)
-	backgroundMusic: AudioSource = null!;
-
 	private unlocked = false;
 
 	onLoad() {
-		// подписываемся на первый клик/тап ГЛОБАЛЬНО
-		input.on(Input.EventType.TOUCH_START, this.unlockAudio, this);
-		input.on(Input.EventType.MOUSE_DOWN, this.unlockAudio, this);
+		eventBus.on(GameEvents.PLAY_REQUESTED, this.onClick, this);
+		eventBus.on(GameEvents.BET_CHANGE_REQUEST, this.onClick, this);
+		eventBus.on(GameEvents.COLOR_CHANGE_REQUEST, this.onClick, this);
+		eventBus.on(GameEvents.RESULT_READY, this.onResult, this);
 	}
 
-	private unlockAudio() {
-		// защита от повторного вызова
+	onDestroy() {
+		input.off(Input.EventType.TOUCH_START, this.unlockAudio, this);
+		input.off(Input.EventType.MOUSE_DOWN, this.unlockAudio, this);
+	}
+
+	private async unlockAudio() {
 		if (this.unlocked) return;
 
 		this.unlocked = true;
 
-		//запускаем звук
-		this.backgroundMusic?.play();
+		await audioService.init(); // ← ВАЖНО
 
-		// удаляем listeners
-		input.off(Input.EventType.TOUCH_START, this.unlockAudio, this);
-		input.off(Input.EventType.MOUSE_DOWN, this.unlockAudio, this);
+		audioService.play('bg');
+	}
+
+	private onClick() {
+		if (!this.unlocked) {
+			this.unlockAudio();
+		}
+
+		audioService.play('click');
+	}
+
+	private onResult({ isWin }: any) {
+		if (!this.unlocked) {
+			this.unlockAudio();
+		}
+
+		if (isWin) {
+			audioService.play('win');
+		} else {
+			audioService.play('lose');
+		}
 	}
 }

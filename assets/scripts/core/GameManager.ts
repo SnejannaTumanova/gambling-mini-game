@@ -1,184 +1,149 @@
 import { _decorator, Component } from 'cc';
-import { WheelController } from '../game/WheelController';
-import { UIController } from '../ui/UIController';
-import { Bet, BetType, RoundOutcome } from '../data/Types';
 import { GameService } from '../services/GameService';
 import { RandomService } from '../services/RandomService';
-import { GameFlowState } from './GameFlowState';
 import { GameConfig } from '../data/GameConfig';
+import { RoundOutcome, BetType } from '../data/Types';
+import { GameFlowState } from './GameFlowState';
+import { eventBus } from './EventBus';
+import { GameEvents } from './GameEvents';
+import { gameStore } from './GameStore';
 
-const { ccclass, property } = _decorator;
+const { ccclass } = _decorator;
 
 @ccclass('GameManager')
 export class GameManager extends Component {
-	@property(WheelController)
-	wheelController: WheelController = null!;
-
-	@property(UIController)
-	uiController: UIController = null!;
-
-	private balance: number = GameConfig.START_BALANCE;
-
-	private currentBet: Bet = {
-		type: 'red',
-		amount: GameConfig.DEFAULT_BET,
-	};
-
-	private flowState: GameFlowState = GameFlowState.IDLE;
-
-	private gameService = new GameService(new RandomService()); // для создания сервиса с конкретным шансом 50%
+	private gameService = new GameService(new RandomService());
 
 	start() {
-		this.uiController.setInteractionEnabled(false); //выключаю кнопки
-		this.syncUI();
-
-		this.uiController.hideResult();
-		this.uiController.setInteractionEnabled(true); // включаю после результата
+		eventBus.on(GameEvents.PLAY_REQUESTED, this.onPlayRequested, this);
+		eventBus.on(GameEvents.BET_CHANGE_REQUEST, this.onBetChangeRequested, this);
+		eventBus.on(
+			GameEvents.COLOR_CHANGE_REQUEST,
+			this.onColorChangeRequested,
+			this,
+		);
+		eventBus.on(
+			GameEvents.WHEEL_SPIN_COMPLETED,
+			this.onWheelSpinCompleted,
+			this,
+		);
 	}
 
-	//  SYNC UI
-
-	private syncUI() {
-		this.uiController.updateBalance(this.balance);
-		this.uiController.updateBet(this.currentBet.amount);
-		this.uiController.updateSelectedColor(this.currentBet.type);
+	onDestroy() {
+		eventBus.off(GameEvents.PLAY_REQUESTED, this.onPlayRequested, this);
+		eventBus.off(
+			GameEvents.BET_CHANGE_REQUEST,
+			this.onBetChangeRequested,
+			this,
+		);
+		eventBus.off(
+			GameEvents.COLOR_CHANGE_REQUEST,
+			this.onColorChangeRequested,
+			this,
+		);
+		eventBus.off(
+			GameEvents.WHEEL_SPIN_COMPLETED,
+			this.onWheelSpinCompleted,
+			this,
+		);
 	}
 
-	//  BET ACTIONS
+	private onBetChangeRequested(delta: number) {
+		if (gameStore.getState() !== GameFlowState.IDLE) return;
 
-	increaseBet(amount: number) {
-		if (this.flowState !== GameFlowState.IDLE) return; //надо было вынести в отдельный метод...
+		const currentBet = gameStore.getBet();
+		const balance = gameStore.getBalance();
 
-		const available = this.balance - this.currentBet.amount;
+		const nextAmount = currentBet.amount + delta;
 
-		if (available < amount) return;
+		if (nextAmount < GameConfig.RESET_BET) return;
+		if (nextAmount > balance) return;
 
-		this.currentBet.amount += amount;
-
-		this.syncUI();
+		gameStore.setBetAmount(nextAmount);
 	}
 
-	resetBet() {
-		if (this.flowState !== GameFlowState.IDLE) return;
+	private onColorChangeRequested(color: BetType) {
+		if (gameStore.getState() !== GameFlowState.IDLE) return;
 
-		this.currentBet.amount = GameConfig.RESET_BET;
-
-		this.syncUI();
+		gameStore.setColor(color);
 	}
 
-	selectColor(color: BetType) {
-		if (this.flowState !== GameFlowState.IDLE) return;
+	private onPlayRequested() {
+		if (gameStore.getState() !== GameFlowState.IDLE) return;
 
-		this.currentBet.type = color;
+		const balance = gameStore.getBalance();
+		const bet = gameStore.getBet();
 
-		this.uiController.updateSelectedColor(color); // чтобы не перегружать логикой syncUI
-	}
-
-	// GAME FLOW
-
-	play() {
-		if (this.flowState !== GameFlowState.IDLE) return;
-
-		if (!this.gameService.canPlay(this.balance, this.currentBet)) {
-			// бизнес-логика в сервисе (правила)
+		if (!this.gameService.canPlay(balance, bet)) {
 			console.log('Cannot play');
 			return;
 		}
 
-		this.uiController.playButtonClickAnimation();
-		this.uiController.playClick();
+		gameStore.setState(GameFlowState.SPINNING);
 
-		this.flowState = GameFlowState.SPINNING;
+		const isWin = this.gameService.rollWin();
 
-		this.uiController.hideResult();
-		this.uiController.setInteractionEnabled(false);
+		const outcome = this.gameService.resolveRound(balance, bet, isWin);
 
-		const isWin = this.gameService.rollWin(); // определяем исход
-
-		const outcome = this.gameService.resolveRound(
-			this.balance,
-			this.currentBet,
-			isWin,
-		);
-
-		const prevBalance = this.balance;
-
-		this.wheelController.spinTo(outcome.resultType, () => {
-			this.onSpinComplete(outcome, prevBalance);
+		eventBus.emit(GameEvents.ROUND_STARTED, {
+			outcome,
+			prevBalance: balance,
 		});
 	}
 
-	private onSpinComplete(outcome: RoundOutcome, prevBalance: number) {
-		this.flowState = GameFlowState.SHOWING_RESULT;
+	private onWheelSpinCompleted(payload: {
+		outcome: RoundOutcome;
+		prevBalance: number;
+	}) {
+		const { outcome, prevBalance } = payload;
 
-		//  сохраняем старую ставку
-		const previousBetAmount = this.currentBet.amount;
+		gameStore.setState(GameFlowState.SHOWING_RESULT);
 
-		this.balance = outcome.nextBalance;
+		const previousBetAmount = gameStore.getBet().amount;
 
-		// ФИКС СТАВКИ
-		if (this.currentBet.amount > this.balance) {
-			this.currentBet.amount = GameConfig.RESET_BET;
+		gameStore.setBalance(outcome.nextBalance);
+
+		if (gameStore.getBet().amount > gameStore.getBalance()) {
+			gameStore.setBetAmount(GameConfig.RESET_BET);
 		}
 
-		if (outcome.isWin) {
-			this.uiController.animateBalance(
-				prevBalance,
-				this.balance,
-				GameConfig.BALANCE_ANIMATION_DURATION,
-			);
-		} else {
-			this.uiController.updateBalance(this.balance);
-		}
-
-		// используем старую ставку, потому что outcome.reward при проигрыше равен 0
-		const displayAmount = outcome.isWin ? outcome.reward : previousBetAmount;
-
-		this.uiController.showResult(outcome.isWin, displayAmount);
+		eventBus.emit(GameEvents.RESULT_READY, {
+			isWin: outcome.isWin,
+			amount: outcome.isWin ? outcome.reward : previousBetAmount,
+			prevBalance,
+			newBalance: outcome.nextBalance,
+		});
 
 		this.scheduleOnce(() => {
-			// таймер показа результата
-			this.uiController.hideResult();
-
-			this.flowState = GameFlowState.IDLE;
-			this.uiController.setInteractionEnabled(true);
-
-			this.syncUI();
+			eventBus.emit(GameEvents.RESULT_HIDDEN);
+			gameStore.setState(GameFlowState.IDLE);
 		}, GameConfig.RESULT_SHOW_DURATION);
 	}
 
-	private getOppositeColor(color: BetType): BetType {
-		return color === 'red' ? 'black' : 'red';
-	}
-
-	//  UI BUTTONS
+	// ===== Методы для кнопок из Cocos =====
 
 	onAdd10() {
-		this.uiController.playClick();
-		this.increaseBet(GameConfig.BET_STEP_SMALL);
+		eventBus.emit(GameEvents.BET_CHANGE_REQUEST, GameConfig.BET_STEP_SMALL);
 	}
 
 	onAdd50() {
-		this.uiController.playClick();
-		this.increaseBet(GameConfig.BET_STEP_BIG);
-	}
-
-	onSelectRed() {
-		this.uiController.playClick();
-		this.selectColor('red');
-	}
-
-	onSelectBlack() {
-		this.uiController.playClick();
-		this.selectColor('black');
+		eventBus.emit(GameEvents.BET_CHANGE_REQUEST, GameConfig.BET_STEP_BIG);
 	}
 
 	onResetBet() {
-		this.uiController.playClick();
-		this.resetBet();
+		const currentAmount = gameStore.getBet().amount;
+		eventBus.emit(GameEvents.BET_CHANGE_REQUEST, -currentAmount);
 	}
 
-	// private isIdle(): boolean {
-	// 	return this.flowState === GameFlowState.IDLE;
-	// }
+	onSelectRed() {
+		eventBus.emit(GameEvents.COLOR_CHANGE_REQUEST, 'red');
+	}
+
+	onSelectBlack() {
+		eventBus.emit(GameEvents.COLOR_CHANGE_REQUEST, 'black');
+	}
+
+	onPlay() {
+		eventBus.emit(GameEvents.PLAY_REQUESTED);
+	}
 }

@@ -1,0 +1,135 @@
+CCEffect %{
+  techniques:
+  - passes:
+    - vert: vs
+      frag: fs
+      rasterizerState:
+        cullMode: none
+      depthStencilState:
+        depthTest: false
+        depthWrite: false
+      blendState:
+        targets:
+        - blend: true
+          blendSrc: src_alpha
+          blendDst: one_minus_src_alpha
+          blendDstAlpha: one_minus_src_alpha
+      properties:
+        mainTexture: { value: white, editor: { type: texture } }
+        glowColor: { value: [1.0, 0.6, 0.1, 1.0], editor: { type: color } }
+
+        glowStrength: { value: 0.4 }
+        edgeGlow: { value: 1.2 }
+
+        shimmerStrength: { value: 0.08 }
+        rippleStrength: { value: 0.03 }
+        noiseStrength: { value: 0.05 }
+
+        neonWidth: { value: 0.12 }
+        neonIntensity: { value: 1.6 }
+
+        speed: { value: 0.6 }
+        time: { value: 0.0 }
+}%
+
+CCProgram vs %{
+  precision highp float;
+
+  #include <builtin/uniforms/cc-global>
+  #include <builtin/uniforms/cc-local>
+
+  in vec3 a_position;
+  in vec2 a_uv0;
+  in vec4 a_color;
+
+  out vec2 v_uv;
+  out vec4 v_color;
+
+  void main () {
+    v_uv = a_uv0;
+    v_color = a_color;
+    gl_Position = cc_matViewProj * cc_matWorld * vec4(a_position, 1.0);
+  }
+}%
+
+CCProgram fs %{
+  precision highp float;
+
+  in vec2 v_uv;
+  in vec4 v_color;
+
+  uniform sampler2D mainTexture;
+
+  layout(std140, binding = 0) uniform Constant {
+    vec4 glowColor;
+    float glowStrength;
+    float edgeGlow;
+
+    float shimmerStrength;
+    float rippleStrength;
+    float noiseStrength;
+
+    float neonWidth;
+    float neonIntensity;
+
+    float speed;
+    float time;
+  };
+
+  layout(location = 0) out vec4 fragColor;
+
+  float hash(vec2 p) {
+    return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);
+  }
+
+  float noise(vec2 p) {
+    vec2 i = floor(p);
+    vec2 f = fract(p);
+
+    float a = hash(i);
+    float b = hash(i + vec2(1.0, 0.0));
+    float c = hash(i + vec2(0.0, 1.0));
+    float d = hash(i + vec2(1.0, 1.0));
+
+    vec2 u = f * f * (3.0 - 2.0 * f);
+
+    return mix(a, b, u.x)
+         + (c - a) * u.y * (1.0 - u.x)
+         + (d - b) * u.x * u.y;
+  }
+
+  void main () {
+    vec2 uv = v_uv;
+    vec2 centered = uv - vec2(0.5);
+    float dist = length(centered);
+
+    float ripple = sin(dist * 20.0 - time * 4.0 * speed) * rippleStrength;
+    vec2 warpedUV = uv + centered * ripple * 0.08;
+
+    vec4 tex = texture(mainTexture, warpedUV) * v_color;
+
+    if (tex.a <= 0.001) {
+      discard;
+    }
+
+    float shimmer = sin((uv.x + uv.y) * 12.0 - time * 5.0 * speed) * shimmerStrength;
+    float n = noise(uv * 6.0 + time * 0.8 * speed) * noiseStrength;
+    float glowPulse = 0.5 + 0.5 * sin(time * 3.0 * speed);
+
+    float innerGlowMask = 1.0 - smoothstep(0.18, 0.5, dist);
+    float ringMask = smoothstep(0.5 - neonWidth, 0.5, dist) * (1.0 - smoothstep(0.5, 0.5 + 0.02, dist));
+    float outerEdge = smoothstep(0.38, 0.5, dist);
+
+    float glow = glowStrength * glowPulse + shimmer + n;
+    float neonPulse = 0.75 + 0.25 * sin(time * 6.0 * speed);
+
+    vec3 emissive =
+        glowColor.rgb * glow * innerGlowMask * 1.6 +
+        glowColor.rgb * ringMask * neonIntensity * neonPulse +
+        glowColor.rgb * outerEdge * edgeGlow * 0.7;
+
+    vec3 finalRgb = tex.rgb + emissive * tex.a;
+
+    fragColor = vec4(finalRgb, tex.a);
+  }
+}%
