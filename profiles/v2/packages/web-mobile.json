@@ -1,0 +1,55 @@
+{
+  "__version__": "1.0.1",
+  "builder": {
+    "common": {
+      "polyfills": {
+        "asyncFunctions": true
+      },
+      "buildPath": "project://docs",
+      "outputName": "",
+      "mainBundleCompressionType": "merge_dep",
+      "platform": "web-mobile",
+      "name": "cocos-gambling-mini-game",
+      "experimentalEraseModules": true
+    },
+    "taskOptionsMap": {
+      "1774223966350": {
+        "useWebGPU": false,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      },
+      "1774226076911": {
+        "useWebGPU": false,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      },
+      "1774226623822": {
+        "useWebGPU": false,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      },
+      "1774227702164": {
+        "useWebGPU": false,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      },
+      "1774258701363": {
+        "useWebGPU": false,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      },
+      "1774259632200": {
+        "useWebGPU": false,
+        "orientation": "auto",
+        "embedWebDebugger": false,
+        "__version__": "1.0.1"
+      }
+    },
+    "__version__": "1.3.9"
+  }
+}

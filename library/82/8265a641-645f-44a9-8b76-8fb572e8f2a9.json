@@ -1,0 +1,653 @@
+{
+  "__type__": "cc.EffectAsset",
+  "_name": "../materials/wheel-glow",
+  "_objFlags": 0,
+  "__editorExtras__": {},
+  "_native": "",
+  "techniques": [
+    {
+      "passes": [
+        {
+          "rasterizerState": {
+            "cullMode": 0
+          },
+          "blendState": {
+            "targets": [
+              {
+                "blend": true,
+                "blendSrc": 2,
+                "blendDst": 4,
+                "blendDstAlpha": 4
+              }
+            ]
+          },
+          "program": "../materials/wheel-glow|vs|fs",
+          "depthStencilState": {
+            "depthTest": false,
+            "depthWrite": false
+          },
+          "properties": {
+            "mainTexture": {
+              "value": "white",
+              "editor": {
+                "type": "texture"
+              },
+              "type": 28
+            },
+            "glowColor": {
+              "value": [
+                1,
+                0.6,
+                0.1,
+                1
+              ],
+              "editor": {
+                "type": "color"
+              },
+              "type": 16
+            },
+            "glowStrength": {
+              "value": [
+                0.4
+              ],
+              "type": 13
+            },
+            "edgeGlow": {
+              "value": [
+                1.2
+              ],
+              "type": 13
+            },
+            "shimmerStrength": {
+              "value": [
+                0.08
+              ],
+              "type": 13
+            },
+            "rippleStrength": {
+              "value": [
+                0.03
+              ],
+              "type": 13
+            },
+            "noiseStrength": {
+              "value": [
+                0.05
+              ],
+              "type": 13
+            },
+            "neonWidth": {
+              "value": [
+                0.12
+              ],
+              "type": 13
+            },
+            "neonIntensity": {
+              "value": [
+                1.6
+              ],
+              "type": 13
+            },
+            "speed": {
+              "value": [
+                0.6
+              ],
+              "type": 13
+            },
+            "time": {
+              "value": [
+                0
+              ],
+              "type": 13
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "shaders": [
+    {
+      "blocks": [
+        {
+          "name": "Constant",
+          "members": [
+            {
+              "name": "glowColor",
+              "type": 16,
+              "count": 1
+            },
+            {
+              "name": "glowStrength",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "edgeGlow",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "shimmerStrength",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "rippleStrength",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "noiseStrength",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "neonWidth",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "neonIntensity",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "speed",
+              "type": 13,
+              "count": 1
+            },
+            {
+              "name": "time",
+              "type": 13,
+              "count": 1
+            }
+          ],
+          "defines": [],
+          "stageFlags": 16,
+          "binding": 0
+        }
+      ],
+      "samplerTextures": [
+        {
+          "name": "mainTexture",
+          "type": 28,
+          "count": 1,
+          "defines": [],
+          "stageFlags": 16,
+          "sampleType": 0,
+          "binding": 1
+        }
+      ],
+      "samplers": [],
+      "textures": [],
+      "buffers": [],
+      "images": [],
+      "subpassInputs": [],
+      "attributes": [
+        {
+          "name": "a_position",
+          "defines": [],
+          "format": 32,
+          "location": 0
+        },
+        {
+          "name": "a_uv0",
+          "defines": [],
+          "format": 21,
+          "location": 1
+        },
+        {
+          "name": "a_color",
+          "defines": [],
+          "format": 44,
+          "location": 2
+        }
+      ],
+      "varyings": [
+        {
+          "name": "v_uv",
+          "type": 14,
+          "count": 1,
+          "defines": [],
+          "stageFlags": 17,
+          "location": 0
+        },
+        {
+          "name": "v_color",
+          "type": 16,
+          "count": 1,
+          "defines": [],
+          "stageFlags": 17,
+          "location": 1
+        }
+      ],
+      "fragColors": [
+        {
+          "name": "fragColor",
+          "typename": "vec4",
+          "type": 16,
+          "count": 1,
+          "defines": [],
+          "stageFlags": 16,
+          "location": 0
+        }
+      ],
+      "descriptors": [
+        {
+          "rate": 0,
+          "blocks": [
+            {
+              "tags": {
+                "builtin": "local"
+              },
+              "name": "CCLocal",
+              "members": [
+                {
+                  "name": "cc_matWorld",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_matWorldIT",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_lightingMapUVParam",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_localShadowBias",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_reflectionProbeData1",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_reflectionProbeData2",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_reflectionProbeBlendData1",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_reflectionProbeBlendData2",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                }
+              ],
+              "defines": [],
+              "stageFlags": 1
+            }
+          ],
+          "samplerTextures": [],
+          "samplers": [],
+          "textures": [],
+          "buffers": [],
+          "images": [],
+          "subpassInputs": []
+        },
+        {
+          "rate": 1,
+          "blocks": [
+            {
+              "name": "Constant",
+              "members": [
+                {
+                  "name": "glowColor",
+                  "type": 16,
+                  "count": 1
+                },
+                {
+                  "name": "glowStrength",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "edgeGlow",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "shimmerStrength",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "rippleStrength",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "noiseStrength",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "neonWidth",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "neonIntensity",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "speed",
+                  "type": 13,
+                  "count": 1
+                },
+                {
+                  "name": "time",
+                  "type": 13,
+                  "count": 1
+                }
+              ],
+              "defines": [],
+              "stageFlags": 16,
+              "binding": 0
+            }
+          ],
+          "samplerTextures": [
+            {
+              "name": "mainTexture",
+              "type": 28,
+              "count": 1,
+              "defines": [],
+              "stageFlags": 16,
+              "sampleType": 0,
+              "binding": 1
+            }
+          ],
+          "samplers": [],
+          "textures": [],
+          "buffers": [],
+          "images": [],
+          "subpassInputs": []
+        },
+        {
+          "rate": 2,
+          "blocks": [],
+          "samplerTextures": [],
+          "samplers": [],
+          "textures": [],
+          "buffers": [],
+          "images": [],
+          "subpassInputs": []
+        },
+        {
+          "rate": 3,
+          "blocks": [
+            {
+              "tags": {
+                "builtin": "global"
+              },
+              "name": "CCGlobal",
+              "members": [
+                {
+                  "name": "cc_time",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_screenSize",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_nativeSize",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_probeInfo",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_debug_view_mode",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                }
+              ],
+              "defines": [],
+              "stageFlags": 1
+            },
+            {
+              "tags": {
+                "builtin": "global"
+              },
+              "name": "CCCamera",
+              "members": [
+                {
+                  "name": "cc_matView",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_matViewInv",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_matProj",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_matProjInv",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_matViewProj",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_matViewProjInv",
+                  "typename": "mat4",
+                  "type": 25,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_cameraPos",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "highp "
+                },
+                {
+                  "name": "cc_surfaceTransform",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_screenScale",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_exposure",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_mainLitDir",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_mainLitColor",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_ambientSky",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_ambientGround",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_fogColor",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_fogBase",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_fogAdd",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_nearFar",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                },
+                {
+                  "name": "cc_viewPort",
+                  "typename": "vec4",
+                  "type": 16,
+                  "count": 1,
+                  "precision": "mediump "
+                }
+              ],
+              "defines": [],
+              "stageFlags": 1
+            }
+          ],
+          "samplerTextures": [],
+          "samplers": [],
+          "textures": [],
+          "buffers": [],
+          "images": [],
+          "subpassInputs": []
+        }
+      ],
+      "hash": 1885567930,
+      "glsl4": {
+        "vert": "\nprecision highp float;\nlayout(set = 0, binding = 0) uniform CCGlobal {\n  highp   vec4 cc_time;\n  mediump vec4 cc_screenSize;\n  mediump vec4 cc_nativeSize;\n  mediump vec4 cc_probeInfo;\n  mediump vec4 cc_debug_view_mode;\n};\nlayout(set = 0, binding = 1) uniform CCCamera {\n  highp   mat4 cc_matView;\n  highp   mat4 cc_matViewInv;\n  highp   mat4 cc_matProj;\n  highp   mat4 cc_matProjInv;\n  highp   mat4 cc_matViewProj;\n  highp   mat4 cc_matViewProjInv;\n  highp   vec4 cc_cameraPos;\n  mediump vec4 cc_surfaceTransform;\n  mediump vec4 cc_screenScale;\n  mediump vec4 cc_exposure;\n  mediump vec4 cc_mainLitDir;\n  mediump vec4 cc_mainLitColor;\n  mediump vec4 cc_ambientSky;\n  mediump vec4 cc_ambientGround;\n  mediump vec4 cc_fogColor;\n  mediump vec4 cc_fogBase;\n  mediump vec4 cc_fogAdd;\n  mediump vec4 cc_nearFar;\n  mediump vec4 cc_viewPort;\n};\nlayout(set = 2, binding = 0) uniform CCLocal {\n  highp mat4 cc_matWorld;\n  highp mat4 cc_matWorldIT;\n  highp vec4 cc_lightingMapUVParam;\n  highp vec4 cc_localShadowBias;\n  highp vec4 cc_reflectionProbeData1;\n  highp vec4 cc_reflectionProbeData2;\n  highp vec4 cc_reflectionProbeBlendData1;\n  highp vec4 cc_reflectionProbeBlendData2;\n};\nlayout(location = 0) in vec3 a_position;\nlayout(location = 1) in vec2 a_uv0;\nlayout(location = 2) in vec4 a_color;\nlayout(location = 0) out vec2 v_uv;\nlayout(location = 1) out vec4 v_color;\nvoid main () {\n  v_uv = a_uv0;\n  v_color = a_color;\n  gl_Position = cc_matViewProj * cc_matWorld * vec4(a_position, 1.0);\n}",
+        "frag": "\nprecision highp float;\nlayout(location = 0) in vec2 v_uv;\nlayout(location = 1) in vec4 v_color;\nlayout(set = 1, binding = 1) uniform sampler2D mainTexture;\nlayout(set = 1, std140, binding = 0) uniform Constant {\n  vec4 glowColor;\n  float glowStrength;\n  float edgeGlow;\n  float shimmerStrength;\n  float rippleStrength;\n  float noiseStrength;\n  float neonWidth;\n  float neonIntensity;\n  float speed;\n  float time;\n};\nlayout(location = 0) out vec4 fragColor;\nfloat hash(vec2 p) {\n  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);\n}\nfloat noise(vec2 p) {\n  vec2 i = floor(p);\n  vec2 f = fract(p);\n  float a = hash(i);\n  float b = hash(i + vec2(1.0, 0.0));\n  float c = hash(i + vec2(0.0, 1.0));\n  float d = hash(i + vec2(1.0, 1.0));\n  vec2 u = f * f * (3.0 - 2.0 * f);\n  return mix(a, b, u.x)\n       + (c - a) * u.y * (1.0 - u.x)\n       + (d - b) * u.x * u.y;\n}\nvoid main () {\n  vec2 uv = v_uv;\n  vec2 centered = uv - vec2(0.5);\n  float dist = length(centered);\n  float ripple = sin(dist * 20.0 - time * 4.0 * speed) * rippleStrength;\n  vec2 warpedUV = uv + centered * ripple * 0.08;\n  vec4 tex = texture(mainTexture, warpedUV) * v_color;\n  if (tex.a <= 0.001) {\n    discard;\n  }\n  float shimmer = sin((uv.x + uv.y) * 12.0 - time * 5.0 * speed) * shimmerStrength;\n  float n = noise(uv * 6.0 + time * 0.8 * speed) * noiseStrength;\n  float glowPulse = 0.5 + 0.5 * sin(time * 3.0 * speed);\n  float innerGlowMask = 1.0 - smoothstep(0.18, 0.5, dist);\n  float ringMask = smoothstep(0.5 - neonWidth, 0.5, dist) * (1.0 - smoothstep(0.5, 0.5 + 0.02, dist));\n  float outerEdge = smoothstep(0.38, 0.5, dist);\n  float glow = glowStrength * glowPulse + shimmer + n;\n  float neonPulse = 0.75 + 0.25 * sin(time * 6.0 * speed);\n  vec3 emissive =\n      glowColor.rgb * glow * innerGlowMask * 1.6 +\n      glowColor.rgb * ringMask * neonIntensity * neonPulse +\n      glowColor.rgb * outerEdge * edgeGlow * 0.7;\n  vec3 finalRgb = tex.rgb + emissive * tex.a;\n  fragColor = vec4(finalRgb, tex.a);\n}"
+      },
+      "glsl3": {
+        "vert": "\nprecision highp float;\nlayout(std140) uniform CCGlobal {\n  highp   vec4 cc_time;\n  mediump vec4 cc_screenSize;\n  mediump vec4 cc_nativeSize;\n  mediump vec4 cc_probeInfo;\n  mediump vec4 cc_debug_view_mode;\n};\nlayout(std140) uniform CCCamera {\n  highp   mat4 cc_matView;\n  highp   mat4 cc_matViewInv;\n  highp   mat4 cc_matProj;\n  highp   mat4 cc_matProjInv;\n  highp   mat4 cc_matViewProj;\n  highp   mat4 cc_matViewProjInv;\n  highp   vec4 cc_cameraPos;\n  mediump vec4 cc_surfaceTransform;\n  mediump vec4 cc_screenScale;\n  mediump vec4 cc_exposure;\n  mediump vec4 cc_mainLitDir;\n  mediump vec4 cc_mainLitColor;\n  mediump vec4 cc_ambientSky;\n  mediump vec4 cc_ambientGround;\n  mediump vec4 cc_fogColor;\n  mediump vec4 cc_fogBase;\n  mediump vec4 cc_fogAdd;\n  mediump vec4 cc_nearFar;\n  mediump vec4 cc_viewPort;\n};\nlayout(std140) uniform CCLocal {\n  highp mat4 cc_matWorld;\n  highp mat4 cc_matWorldIT;\n  highp vec4 cc_lightingMapUVParam;\n  highp vec4 cc_localShadowBias;\n  highp vec4 cc_reflectionProbeData1;\n  highp vec4 cc_reflectionProbeData2;\n  highp vec4 cc_reflectionProbeBlendData1;\n  highp vec4 cc_reflectionProbeBlendData2;\n};\nin vec3 a_position;\nin vec2 a_uv0;\nin vec4 a_color;\nout vec2 v_uv;\nout vec4 v_color;\nvoid main () {\n  v_uv = a_uv0;\n  v_color = a_color;\n  gl_Position = cc_matViewProj * cc_matWorld * vec4(a_position, 1.0);\n}",
+        "frag": "\nprecision highp float;\nin vec2 v_uv;\nin vec4 v_color;\nuniform sampler2D mainTexture;\nlayout(std140) uniform Constant {\n  vec4 glowColor;\n  float glowStrength;\n  float edgeGlow;\n  float shimmerStrength;\n  float rippleStrength;\n  float noiseStrength;\n  float neonWidth;\n  float neonIntensity;\n  float speed;\n  float time;\n};\nlayout(location = 0) out vec4 fragColor;\nfloat hash(vec2 p) {\n  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);\n}\nfloat noise(vec2 p) {\n  vec2 i = floor(p);\n  vec2 f = fract(p);\n  float a = hash(i);\n  float b = hash(i + vec2(1.0, 0.0));\n  float c = hash(i + vec2(0.0, 1.0));\n  float d = hash(i + vec2(1.0, 1.0));\n  vec2 u = f * f * (3.0 - 2.0 * f);\n  return mix(a, b, u.x)\n       + (c - a) * u.y * (1.0 - u.x)\n       + (d - b) * u.x * u.y;\n}\nvoid main () {\n  vec2 uv = v_uv;\n  vec2 centered = uv - vec2(0.5);\n  float dist = length(centered);\n  float ripple = sin(dist * 20.0 - time * 4.0 * speed) * rippleStrength;\n  vec2 warpedUV = uv + centered * ripple * 0.08;\n  vec4 tex = texture(mainTexture, warpedUV) * v_color;\n  if (tex.a <= 0.001) {\n    discard;\n  }\n  float shimmer = sin((uv.x + uv.y) * 12.0 - time * 5.0 * speed) * shimmerStrength;\n  float n = noise(uv * 6.0 + time * 0.8 * speed) * noiseStrength;\n  float glowPulse = 0.5 + 0.5 * sin(time * 3.0 * speed);\n  float innerGlowMask = 1.0 - smoothstep(0.18, 0.5, dist);\n  float ringMask = smoothstep(0.5 - neonWidth, 0.5, dist) * (1.0 - smoothstep(0.5, 0.5 + 0.02, dist));\n  float outerEdge = smoothstep(0.38, 0.5, dist);\n  float glow = glowStrength * glowPulse + shimmer + n;\n  float neonPulse = 0.75 + 0.25 * sin(time * 6.0 * speed);\n  vec3 emissive =\n      glowColor.rgb * glow * innerGlowMask * 1.6 +\n      glowColor.rgb * ringMask * neonIntensity * neonPulse +\n      glowColor.rgb * outerEdge * edgeGlow * 0.7;\n  vec3 finalRgb = tex.rgb + emissive * tex.a;\n  fragColor = vec4(finalRgb, tex.a);\n}"
+      },
+      "glsl1": {
+        "vert": "\nprecision highp float;\nuniform highp mat4 cc_matViewProj;\nuniform highp mat4 cc_matWorld;\nattribute vec3 a_position;\nattribute vec2 a_uv0;\nattribute vec4 a_color;\nvarying vec2 v_uv;\nvarying vec4 v_color;\nvoid main () {\n  v_uv = a_uv0;\n  v_color = a_color;\n  gl_Position = cc_matViewProj * cc_matWorld * vec4(a_position, 1.0);\n}",
+        "frag": "\nprecision highp float;\nvarying vec2 v_uv;\nvarying vec4 v_color;\nuniform sampler2D mainTexture;\nuniform vec4 glowColor;\n  uniform float glowStrength;\n  uniform float edgeGlow;\n  uniform float shimmerStrength;\n  uniform float rippleStrength;\n  uniform float noiseStrength;\n  uniform float neonWidth;\n  uniform float neonIntensity;\n  uniform float speed;\n  uniform float time;\nfloat hash(vec2 p) {\n  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);\n}\nfloat noise(vec2 p) {\n  vec2 i = floor(p);\n  vec2 f = fract(p);\n  float a = hash(i);\n  float b = hash(i + vec2(1.0, 0.0));\n  float c = hash(i + vec2(0.0, 1.0));\n  float d = hash(i + vec2(1.0, 1.0));\n  vec2 u = f * f * (3.0 - 2.0 * f);\n  return mix(a, b, u.x)\n       + (c - a) * u.y * (1.0 - u.x)\n       + (d - b) * u.x * u.y;\n}\nvoid main () {\n  vec2 uv = v_uv;\n  vec2 centered = uv - vec2(0.5);\n  float dist = length(centered);\n  float ripple = sin(dist * 20.0 - time * 4.0 * speed) * rippleStrength;\n  vec2 warpedUV = uv + centered * ripple * 0.08;\n  vec4 tex = texture2D(mainTexture, warpedUV) * v_color;\n  if (tex.a <= 0.001) {\n    discard;\n  }\n  float shimmer = sin((uv.x + uv.y) * 12.0 - time * 5.0 * speed) * shimmerStrength;\n  float n = noise(uv * 6.0 + time * 0.8 * speed) * noiseStrength;\n  float glowPulse = 0.5 + 0.5 * sin(time * 3.0 * speed);\n  float innerGlowMask = 1.0 - smoothstep(0.18, 0.5, dist);\n  float ringMask = smoothstep(0.5 - neonWidth, 0.5, dist) * (1.0 - smoothstep(0.5, 0.5 + 0.02, dist));\n  float outerEdge = smoothstep(0.38, 0.5, dist);\n  float glow = glowStrength * glowPulse + shimmer + n;\n  float neonPulse = 0.75 + 0.25 * sin(time * 6.0 * speed);\n  vec3 emissive =\n      glowColor.rgb * glow * innerGlowMask * 1.6 +\n      glowColor.rgb * ringMask * neonIntensity * neonPulse +\n      glowColor.rgb * outerEdge * edgeGlow * 0.7;\n  vec3 finalRgb = tex.rgb + emissive * tex.a;\n  gl_FragColor = vec4(finalRgb, tex.a);\n}"
+      },
+      "builtins": {
+        "globals": {
+          "blocks": [
+            {
+              "name": "CCGlobal",
+              "defines": []
+            },
+            {
+              "name": "CCCamera",
+              "defines": []
+            }
+          ],
+          "samplerTextures": [],
+          "buffers": [],
+          "images": []
+        },
+        "locals": {
+          "blocks": [
+            {
+              "name": "CCLocal",
+              "defines": []
+            }
+          ],
+          "samplerTextures": [],
+          "buffers": [],
+          "images": []
+        },
+        "statistics": {
+          "CC_EFFECT_USED_VERTEX_UNIFORM_VECTORS": 56,
+          "CC_EFFECT_USED_FRAGMENT_UNIFORM_VECTORS": 10
+        }
+      },
+      "defines": [],
+      "name": "../materials/wheel-glow|vs|fs"
+    }
+  ],
+  "combinations": [],
+  "hideInEditor": false
+}

@@ -3,7 +3,7 @@ export class RandomService {
 		return Math.random() < chance;
 	}
 
-	// пригодится для выбора угла/разброса
+	// случайное число в диапазоне
 	range(min: number, max: number): number {
 		return Math.random() * (max - min) + min;
 	}

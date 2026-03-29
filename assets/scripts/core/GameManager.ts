@@ -26,14 +26,14 @@ export class GameManager extends Component {
 
 	private flowState: GameFlowState = GameFlowState.IDLE;
 
-	private gameService = new GameService(new RandomService());
+	private gameService = new GameService(new RandomService()); // для создания сервиса с конкретным шансом 50%
 
 	start() {
-		this.uiController.setInteractionEnabled(false);
+		this.uiController.setInteractionEnabled(false); //выключаю кнопки
 		this.syncUI();
 
 		this.uiController.hideResult();
-		this.uiController.setInteractionEnabled(true);
+		this.uiController.setInteractionEnabled(true); // включаю после результата
 	}
 
 	//  SYNC UI
@@ -47,7 +47,7 @@ export class GameManager extends Component {
 	//  BET ACTIONS
 
 	increaseBet(amount: number) {
-		if (this.flowState !== GameFlowState.IDLE) return;
+		if (this.flowState !== GameFlowState.IDLE) return; //надо было вынести в отдельный метод...
 
 		const available = this.balance - this.currentBet.amount;
 
@@ -71,7 +71,7 @@ export class GameManager extends Component {
 
 		this.currentBet.type = color;
 
-		this.uiController.updateSelectedColor(color);
+		this.uiController.updateSelectedColor(color); // чтобы не перегружать логикой syncUI
 	}
 
 	// GAME FLOW
@@ -80,6 +80,7 @@ export class GameManager extends Component {
 		if (this.flowState !== GameFlowState.IDLE) return;
 
 		if (!this.gameService.canPlay(this.balance, this.currentBet)) {
+			// бизнес-логика в сервисе (правила)
 			console.log('Cannot play');
 			return;
 		}
@@ -92,23 +93,17 @@ export class GameManager extends Component {
 		this.uiController.hideResult();
 		this.uiController.setInteractionEnabled(false);
 
-		const isWin = this.gameService.rollWin();
+		const isWin = this.gameService.rollWin(); // определяем исход
 
-		const resultType: BetType = isWin
-			? this.currentBet.type
-			: this.getOppositeColor(this.currentBet.type);
+		const outcome = this.gameService.resolveRound(
+			this.balance,
+			this.currentBet,
+			isWin,
+		);
 
 		const prevBalance = this.balance;
 
-		this.wheelController.spinTo(resultType, () => {
-			const outcome = this.gameService.resolveRound(
-				this.balance,
-				this.currentBet,
-				isWin,
-			);
-
-			this.balance = outcome.nextBalance;
-
+		this.wheelController.spinTo(outcome.resultType, () => {
 			this.onSpinComplete(outcome, prevBalance);
 		});
 	}
@@ -136,12 +131,13 @@ export class GameManager extends Component {
 			this.uiController.updateBalance(this.balance);
 		}
 
-		// используем старую ставку
+		// используем старую ставку, потому что outcome.reward при проигрыше равен 0
 		const displayAmount = outcome.isWin ? outcome.reward : previousBetAmount;
 
 		this.uiController.showResult(outcome.isWin, displayAmount);
 
 		this.scheduleOnce(() => {
+			// таймер показа результата
 			this.uiController.hideResult();
 
 			this.flowState = GameFlowState.IDLE;
@@ -181,4 +177,8 @@ export class GameManager extends Component {
 		this.uiController.playClick();
 		this.resetBet();
 	}
+
+	// private isIdle(): boolean {
+	// 	return this.flowState === GameFlowState.IDLE;
+	// }
 }

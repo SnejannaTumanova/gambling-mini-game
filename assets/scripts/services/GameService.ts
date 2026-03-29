@@ -8,6 +8,7 @@ import { GameConfig } from '../data/GameConfig';
 export class GameService {
 	private randomService: RandomService;
 
+	// можно было бы тоже передать в DI, но сейчас они фиксированы, поэтому пока так, а вот RandomService можно менять и тестировать без изменения логики тут
 	private winStrategy = new WinStrategy();
 	private loseStrategy = new LoseStrategy();
 
@@ -16,10 +17,12 @@ export class GameService {
 	}
 
 	rollWin(chance: number = GameConfig.CHANCE): boolean {
+		//передаём шанс, получаем true/false
 		return this.randomService.rollWin(chance);
 	}
 
 	canPlay(balance: number, bet: Bet | null): boolean {
+		// проверяем есть ли ставка и хватает ли денег
 		if (!bet) return false;
 		if (bet.amount <= 0) return false;
 		if (bet.amount > balance) return false;
@@ -28,6 +31,7 @@ export class GameService {
 	}
 
 	resolveRound(balance: number, bet: Bet, isWin: boolean): RoundOutcome {
+		// в зависимости от результата выбирается стратегия, которая определяет - как изменится баланс.
 		const strategy: ResultStrategy = isWin
 			? this.winStrategy
 			: this.loseStrategy;

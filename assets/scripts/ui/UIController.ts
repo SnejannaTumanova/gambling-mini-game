@@ -20,7 +20,7 @@ const { ccclass, property } = _decorator;
 
 @ccclass('UIController')
 export class UIController extends Component {
-	@property(Label) balanceLabel: Label = null!;
+	@property(Label) balanceLabel: Label = null!; // ! = Сейчас null, но в редакторе Cocos я обязательно подставлю ссылки.
 	@property(Label) betLabel: Label = null!;
 
 	@property(Node) resultRoot: Node = null!;
@@ -50,12 +50,12 @@ export class UIController extends Component {
 	private isInteractionEnabled: boolean = true;
 
 	start() {
-		this.hideResult();
-		this.playIdleAnimation();
+		this.hideResult(); // сркываем мод окно результата
+		this.playIdleAnimation(); // дыхвние кнопки PLAY
 
-		this.overlayBlocker && (this.overlayBlocker.active = false);
+		this.overlayBlocker && (this.overlayBlocker.active = false); // выключаем оверлей
 
-		this.updateSelectedColor(this.selectedColor);
+		this.updateSelectedColor(this.selectedColor); // выбранный цвет анимируется (по умолчанию красный)
 
 		this.addHoverEffect(this.playButton);
 		this.addHoverEffect(this.resetBetButton);
@@ -69,14 +69,14 @@ export class UIController extends Component {
 
 	updateBalance(value: number) {
 		this.currentBalance = value;
-		this.balanceLabel.string = value.toLocaleString();
+		this.balanceLabel.string = value.toLocaleString(); // не 1000, а 1 000 - так красивее
 	}
 
 	updateBet(value: number) {
 		this.currentBet = value;
-		this.betLabel.string = value.toString();
+		this.betLabel.string = value.toString(); //пропустила, надо было для общего UI - тоже toLocaleString()
 
-		this.refreshBetControls();
+		this.refreshBetControls(); //доступность кнопок повышения ставки
 	}
 
 	private refreshBetControls() {
@@ -99,15 +99,15 @@ export class UIController extends Component {
 		to: number,
 		duration: number = GameConfig.BALANCE_ANIMATION_DURATION,
 	) {
-		const obj = { value: from };
+		const obj = { value: from }; //промежуточный объект, потому что напрямую строку анимировать нельзя, где from - начальная стадия
 
 		tween(obj)
 			.to(
 				duration,
-				{ value: to },
+				{ value: to }, // to - результат к которому мы должны прийти
 				{
 					onUpdate: () => {
-						this.balanceLabel.string = Math.floor(obj.value).toLocaleString();
+						this.balanceLabel.string = Math.floor(obj.value).toLocaleString(); // каждый кадр рисуем промежуточное число
 					},
 				},
 			)
@@ -119,9 +119,9 @@ export class UIController extends Component {
 	// =====================
 
 	showResult(isWin: boolean, amount: number) {
-		this.resultRoot.active = true;
+		this.resultRoot.active = true; //включаем popup результата.
 
-		isWin ? this.winSound?.play() : this.loseSound?.play();
+		isWin ? this.winSound?.play() : this.loseSound?.play(); // нужный звук, ?. = если он есть
 
 		this.animateResultBackground();
 
@@ -135,12 +135,13 @@ export class UIController extends Component {
 	}
 
 	private playResultAnimation(isWin: boolean) {
-		this.unscheduleAllCallbacks();
-		Tween.stopAllByTarget(this.resultRoot);
+		this.unscheduleAllCallbacks(); // удаляем старые отложенные вызовы
+		Tween.stopAllByTarget(this.resultRoot); // останавливаем старые анимации popup
 
 		this.resultRoot.setPosition(0, 0, 0);
 
 		this.resultRoot.setScale(
+			// начальный Scale popup, перед появлением
 			new Vec3(
 				GameConfig.RESULT_POPUP_START_SCALE,
 				GameConfig.RESULT_POPUP_START_SCALE,
@@ -148,33 +149,34 @@ export class UIController extends Component {
 			),
 		);
 
-		let opacity = this.resultRoot.getComponent(UIOpacity);
+		let opacity = this.resultRoot.getComponent(UIOpacity); // получаем компонент прозрачности
 		if (!opacity) {
-			opacity = this.resultRoot.addComponent(UIOpacity);
+			opacity = this.resultRoot.addComponent(UIOpacity); // если его нет - создаем
 		}
 
 		opacity.opacity = 0;
 
-		// появление
+		// анимация появления текста ( 2 анимации scale animation + fade animation параллельно)
 		tween(this.resultRoot)
 			.to(GameConfig.RESULT_POPUP_BOUNCE_IN_1, {
-				scale: new Vec3(
+				scale: new Vec3( //чуть больше, чем должен быть = как бы резиновое появление - motion
 					GameConfig.RESULT_POPUP_MID_SCALE,
 					GameConfig.RESULT_POPUP_MID_SCALE,
 					1,
 				),
 			})
 			.to(GameConfig.RESULT_POPUP_BOUNCE_IN_2, {
-				scale: Vec3.ONE,
+				scale: Vec3.ONE, // норма
 			})
 			.start();
 
-		tween(opacity).to(GameConfig.FADE_DURATION, { opacity: 255 }).start();
+		tween(opacity).to(GameConfig.FADE_DURATION, { opacity: 255 }).start(); // при этом текст плавно становится видимым
 
 		// WIN
 		if (isWin) {
 			tween(this.resultAmountLabel.node)
 				.repeatForever(
+					// сумма выигрыша бесконечно пульсирует, а за время отвечает таймер в onSpinComplete внутри GameManager
 					tween()
 						.to(GameConfig.WIN_AMOUNT_PULSE_DURATION, {
 							scale: new Vec3(
@@ -193,6 +195,7 @@ export class UIController extends Component {
 		// LOSE
 		else {
 			this.scheduleOnce(() => {
+				// задержка, для анимации , чтобы пользователь успел прочитать инфо, можно было сделать через .delay
 				tween(this.resultRoot)
 					.to(GameConfig.LOSE_DROP_DURATION, {
 						position: new Vec3(0, GameConfig.LOSE_DROP_Y, 0),
@@ -212,6 +215,7 @@ export class UIController extends Component {
 	}
 
 	hideResult() {
+		//Полностью очищаем состояние popup результата.
 		this.resultRoot.active = false;
 
 		this.unscheduleAllCallbacks();
@@ -250,17 +254,17 @@ export class UIController extends Component {
 		this.resultLabel.string = 'YOU WIN';
 		this.resultAmountLabel.string = `+${amount}`;
 
-		this.resultLabel.color = new Color(255, 215, 0);
+		this.resultLabel.color = new Color(255, 215, 0); // золотой текст
 		this.resultAmountLabel.color = new Color(255, 215, 0);
 
-		this.spawnCoins();
+		this.spawnCoins(); // + монетки
 	}
 
 	private setLoseState(amount: number) {
 		this.resultLabel.string = 'YOU LOSE';
 		this.resultAmountLabel.string = `-${amount}`;
 
-		this.resultLabel.color = new Color(30, 30, 30);
+		this.resultLabel.color = new Color(30, 30, 30); // тёмно-серый цвет
 		this.resultAmountLabel.color = new Color(30, 30, 30);
 	}
 
@@ -269,6 +273,7 @@ export class UIController extends Component {
 	// =====================
 
 	updateSelectedColor(color: BetType | null) {
+		//отвечает за анимацию выбранной кнопки цвета
 		this.selectedColor = color;
 
 		this.animateColorButton(this.redButton.node, color === 'red');
@@ -276,11 +281,11 @@ export class UIController extends Component {
 	}
 
 	private animateColorButton(node: Node, isActive: boolean) {
-		Tween.stopAllByTarget(node);
+		Tween.stopAllByTarget(node); // останавливаем прежнюю анимацию
 
-		node.setScale(Vec3.ONE);
+		node.setScale(Vec3.ONE); // возвращаем скейл в норму
 
-		if (!isActive) return;
+		if (!isActive) return; // если эта кнопка не активна, то это всё, а если это выбранная кнопка, то назначаем ей новую анимацию
 
 		node.setScale(new Vec3(1.2, 1.2, 1));
 
@@ -298,6 +303,7 @@ export class UIController extends Component {
 	// =====================
 
 	setInteractionEnabled(enabled: boolean) {
+		//выключаем кнопки + включаем overlay
 		this.isInteractionEnabled = enabled;
 
 		const buttons = [
@@ -309,13 +315,13 @@ export class UIController extends Component {
 			this.blackButton,
 		];
 
-		buttons.forEach((btn) => this.setButtonState(btn, enabled));
+		buttons.forEach((btn) => this.setButtonState(btn, enabled)); // вкл/выкл все кнопки
 
 		if (enabled) {
-			this.refreshBetControls();
+			this.refreshBetControls(); // корректировка по доступности кнопок увеличения ставки
 		}
 
-		this.updateSelectedColor(enabled ? this.selectedColor : null);
+		this.updateSelectedColor(enabled ? this.selectedColor : null); // и снова активируем дыхание выбранного цвета, после разблок
 
 		this.handleOverlay(enabled);
 	}
@@ -330,40 +336,42 @@ export class UIController extends Component {
 			this.overlayBlocker.addComponent(UIOpacity);
 
 		if (!enabled) {
+			// плавно появляется
 			opacity.opacity = 0;
 
 			tween(opacity)
 				.to(GameConfig.FADE_DURATION, { opacity: GameConfig.OVERLAY_OPACITY })
 				.start();
 		} else {
+			// плавно исчезает
 			tween(opacity)
 				.to(GameConfig.FADE_DURATION, { opacity: 0 })
 				.call(() => {
 					this.overlayBlocker.active = false;
-					this.playIdleAnimation();
+					this.playIdleAnimation(); // снова включаем дыхание кнопки PLAY
 				})
 				.start();
 		}
 	}
 
 	private setButtonState(button: Button | null, enabled: boolean) {
-		if (!button) return;
+		if (!button) return; // защита от отсутствующей ссылки.
 
 		const node = button.node;
-		button.interactable = enabled;
+		button.interactable = enabled; //логическое вкл/выкл кнопки
 
 		const opacity =
 			node.getComponent(UIOpacity) || node.addComponent(UIOpacity);
 
-		Tween.stopAllByTarget(opacity);
+		Tween.stopAllByTarget(opacity); //стоп старую анимацию, если она ещё идёт
 
 		tween(opacity)
 			.to(GameConfig.FADE_DURATION, {
-				opacity: enabled ? 255 : GameConfig.DISABLED_OPACITY,
+				opacity: enabled ? 255 : GameConfig.DISABLED_OPACITY, // прозрачность для enabled = 255, для не enabled = 140
 			})
 			.start();
 
-		if (!enabled) node.setScale(Vec3.ONE);
+		if (!enabled) node.setScale(Vec3.ONE); // в выкл состоянии все кнопки стандарного одинакового размера
 	}
 
 	// =====================
@@ -374,7 +382,7 @@ export class UIController extends Component {
 		const node = button.node;
 
 		node.on(Node.EventType.MOUSE_ENTER, () => {
-			if (!button.interactable) return;
+			if (!button.interactable) return; // если кнопка не активна, то никакой реакции
 
 			Tween.stopAllByTarget(node);
 
@@ -395,6 +403,7 @@ export class UIController extends Component {
 	// =====================
 
 	private playIdleAnimation() {
+		// дыхание кнопки PLAY
 		const node = this.playButton.node;
 
 		Tween.stopAllByTarget(node);
@@ -409,40 +418,42 @@ export class UIController extends Component {
 	}
 
 	playButtonClickAnimation() {
+		// растягивание кнопки при клике
 		const node = this.playButton.node;
 
 		tween(node)
-			.to(0.08, { scale: new Vec3(0.95, 0.95, 1) })
-			.to(0.08, { scale: new Vec3(1.05, 1.05, 1) })
-			.to(0.08, { scale: Vec3.ONE })
+			.to(0.08, { scale: new Vec3(0.95, 0.95, 1) }) // кнопка сначла слегка вдавливается
+			.to(0.08, { scale: new Vec3(1.05, 1.05, 1) }) // потом чуть подпрыгивает
+			.to(0.08, { scale: Vec3.ONE }) // потом возвращается в норму
 			.start();
 	}
 
 	private spawnCoins() {
-		if (!this.coinsRoot || !this.coinPrefab) return;
+		if (!this.coinsRoot || !this.coinPrefab) return; // только если есть префаб
 
 		for (let i = 0; i < 8; i++) {
-			const coin = instantiate(this.coinPrefab);
-			this.coinsRoot.addChild(coin);
+			// создаём 8 монеток для анимации получения выигрыша
+			const coin = instantiate(this.coinPrefab); // клонируем 8 монгеток из префаба, можно при масштабировании использовать object pooling
+			this.coinsRoot.addChild(coin); // добавляем на сцену
 
-			const randomX = (Math.random() - 0.5) * 200;
-			const randomY = 150 + Math.random() * 100;
+			const randomX = (Math.random() - 0.5) * 200; // случайная траектория разброса монеток по X оси
+			const randomY = 150 + Math.random() * 100; // случайная траектория разброса монеток по Y оси
 
 			tween(coin)
 				.to(0.6, {
-					position: new Vec3(randomX, randomY, 0),
+					position: new Vec3(randomX, randomY, 0), // монетка вылетает вверх/в сторону
 					scale: Vec3.ONE,
 				})
 				.to(0.3, {
-					position: new Vec3(randomX, randomY - 200, 0),
+					position: new Vec3(randomX, randomY - 200, 0), // потом падает ниже
 				})
-				.call(() => coin.destroy())
+				.call(() => coin.destroy()) //после окончания анимации удаляется
 				.start();
 		}
 	}
 
 	playClick() {
-		this.clickSound?.stop();
-		this.clickSound?.play();
+		this.clickSound?.stop(); // останавливаем текущий clickSound
+		this.clickSound?.play(); // запускаем заново, чтобы короткий звук клика всегда начинался с начала и не наслаивался неаккуратно при частых нажатиях
 	}
 }

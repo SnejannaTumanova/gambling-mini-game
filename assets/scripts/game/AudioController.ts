@@ -10,15 +10,18 @@ export class AudioController extends Component {
 	private unlocked = false;
 
 	onLoad() {
+		// подписываемся на первый клик/тап ГЛОБАЛЬНО
 		input.on(Input.EventType.TOUCH_START, this.unlockAudio, this);
 		input.on(Input.EventType.MOUSE_DOWN, this.unlockAudio, this);
 	}
 
 	private unlockAudio() {
+		// защита от повторного вызова
 		if (this.unlocked) return;
 
 		this.unlocked = true;
 
+		//запускаем звук
 		this.backgroundMusic?.play();
 
 		// удаляем listeners

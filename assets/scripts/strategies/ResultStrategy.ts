@@ -4,3 +4,4 @@ export interface ResultStrategy {
 	apply(balance: number, bet: Bet): number;
 	getReward(bet: Bet): number;
 }
+// Контракт

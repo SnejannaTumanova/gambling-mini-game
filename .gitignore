@@ -1,53 +1,52 @@
 # =========================
 # Cocos Creator
 # =========================
-library/
-temp/
-local/
-build/
-profiles/
-native/
-.settings/
-*.log
+library/      # служебный кэш Cocos Creator; пересоздаётся автоматически, в git не нужен
+temp/         # временные файлы движка/сборки; не являются исходным кодом
+local/        # локальные пользовательские данные проекта; зависят от конкретной машины
+build/        # папка со сборками проекта; обычно это результат билда, а не исходники
+profiles/     # служебные профили/локальные настройки Cocos Creator
+.settings/    # настройки среды/редактора проекта, обычно локальные и не обязательные для репозитория
+*.log         # любые log-файлы; это служебный вывод, а не часть проекта
 
 # Auto generated
-sys/
-bin/
-obj/
+sys/          # автоматически созданные системные/сборочные файлы
+bin/          # скомпилированные бинарные файлы или выходные артефакты
+obj/          # промежуточные объектные файлы компиляции
 
 # =========================
 # Node / NPM
 # =========================
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+node_modules/     # зависимости npm; восстанавливаются через npm install
+npm-debug.log*    # debug-логи npm после ошибок
+yarn-debug.log*   # debug-логи yarn
+yarn-error.log*   # error-логи yarn
 
 # =========================
-# OS
+# OS - "мусор" ситемы
 # =========================
-.DS_Store
-Thumbs.db
+.DS_Store     # служебный файл macOS для настроек отображения папки
+Thumbs.db     # служебный файл Windows с кэшем миниатюр
 
 # =========================
-# IDE
+# IDE - настройки редактора
 # =========================
-.vscode/
-.idea/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+.vscode/      # локальные настройки Visual Studio Code
+.idea/        # локальные настройки IDE JetBrains (WebStorm, IntelliJ и т.д.)
+*.suo         # пользовательские настройки Visual Studio
+*.ntvs*       # служебные файлы Node Tools for Visual Studio
+*.njsproj     # файлы проекта Node.js для Visual Studio
+*.sln         # solution-файлы Visual Studio
 
 # =========================
-# Build artifacts (важно)
+# Build artifacts  - финальные сборки
 # =========================
-dist/
-release/
+dist/         # итоговая собранная версия проекта для распространения/деплоя
+release/      # release-сборки и артефакты релиза
 
 # =========================
-# Misc
+# Misc - архивы
 # =========================
-*.zip
-*.tar
-*.rar
+*.zip         # zip-архивы
+*.tar         # tar-архивы
+*.rar         # rar-архивы
