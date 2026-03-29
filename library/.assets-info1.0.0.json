@@ -89,14 +89,14 @@
       "time": 1773926105375.7964
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons": {
-      "time": 1774027857822.0999,
+      "time": 1774806317964.221,
       "uuid": "2d531640-cd03-443c-8002-a78a88655706"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\panels.meta": {
       "time": 1773926112702.4014
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\panels": {
-      "time": 1774017344935.3794,
+      "time": 1774802731533.125,
       "uuid": "f03f442a-4341-4515-89dd-5c6e8818e329"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\buttons.meta": {
@@ -117,21 +117,21 @@
       "time": 1773926233579.0547
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\GameManager.ts": {
-      "time": 1774785559595.3628,
+      "time": 1774799613156.3337,
       "uuid": "a2c1f225-578c-4332-b87c-7d82684b7141"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\game\\WheelController.ts.meta": {
       "time": 1773926285442.5625
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\game\\WheelController.ts": {
-      "time": 1774789011384.2976,
+      "time": 1774799839858.1047,
       "uuid": "e1d6f3aa-2838-4883-a320-fa29e4c51049"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\ui\\UIController.ts.meta": {
       "time": 1773926336814.052
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\ui\\UIController.ts": {
-      "time": 1774789815340.015,
+      "time": 1774808496451.7124,
       "uuid": "bd8b555d-83c7-4347-91e5-ea2563b28bca"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\data\\GameConfig.ts.meta": {
@@ -166,7 +166,7 @@
       "time": 1773926450253.782
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scenes\\Main.scene": {
-      "time": 1774790510483.1646,
+      "time": 1774808164491.5493,
       "uuid": "7c3b3c5a-08bc-4acd-a671-0609bb3d8341"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\GameFlowState.ts.meta": {
@@ -320,7 +320,7 @@
       "time": 1774217663021.0464
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\game\\AudioController.ts": {
-      "time": 1774795462822.7278,
+      "time": 1774808615113.669,
       "uuid": "d6293d89-42d4-4fac-a02f-338695d7edea"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\game\\FullscreenController.ts.meta": {
@@ -355,21 +355,21 @@
       "time": 1774782422203.9424
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\EventBus.ts": {
-      "time": 1774785593535.2375,
+      "time": 1774797394637.5942,
       "uuid": "5dbd81cb-1771-4aa2-92f9-0f2f44b6da66"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\GameEvents.ts.meta": {
       "time": 1774782457801.8755
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\GameEvents.ts": {
-      "time": 1774795935991.8545,
+      "time": 1774806930506.7231,
       "uuid": "8408fc12-36e7-4fe9-986b-ec82a8626d59"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\GameStore.ts.meta": {
       "time": 1774784160773.215
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\GameStore.ts": {
-      "time": 1774784175899.0586,
+      "time": 1774797439830.594,
       "uuid": "59ad69c6-5aa1-4bf5-adad-56431f07b414"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\core\\GameEntry.ts.meta": {
@@ -397,7 +397,7 @@
       "time": 1774789452261.6475
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\scripts\\services\\AudioService.ts": {
-      "time": 1774795458700.1074,
+      "time": 1774808520380.0337,
       "uuid": "6f4ac589-761a-4f3a-8194-a96d18d6d0bc"
     },
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\resources.meta": {
@@ -455,6 +455,41 @@
     "D:\\Dev\\Games\\gambling-mini-game\\assets\\resources\\audio\\sfx\\win.mp3": {
       "time": 1774034025664.485,
       "uuid": "30b97d92-b645-4d5d-aef5-6076a853a7be"
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\settings.png.meta": {
+      "time": 1774804852039.2441
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\settings.png": {
+      "time": 1774801926088.777,
+      "uuid": "d7a288a9-911e-4a1c-9d8b-e4f7c3a8bca4"
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\panels\\settings_panel.png.meta": {
+      "time": 1774802731577.1255
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\panels\\settings_panel.png": {
+      "time": 1774802718810.31,
+      "uuid": "6a328c25-c301-4b17-958a-4c48d31bd469"
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\mute_sound.png.meta": {
+      "time": 1774804841326.9226
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\mute_sound.png": {
+      "time": 1774803179001.3057,
+      "uuid": "0fe2c7f4-c398-4fbe-a49a-22fafb662466"
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\close.png.meta": {
+      "time": 1774805637838.5515
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\close.png": {
+      "time": 1774805630314.5027,
+      "uuid": "b124610c-88dd-4191-8179-169cb4ea47a1"
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\unmute_sound.png.meta": {
+      "time": 1774806318133.2817
+    },
+    "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\unmute_sound.png": {
+      "time": 1774806293458.6152,
+      "uuid": "2e68f4e6-cca1-4870-9047-0c24bc2fde2e"
     }
   },
   "missing": {
@@ -652,6 +687,11 @@
       "path": "D:\\Dev\\Games\\gambling-mini-game\\assets\\audio\\sfx\\win.mp3",
       "time": 1774034025664.485,
       "removeTime": 1774794911893
+    },
+    "41bc1d5b-9d71-4993-956c-82ff71d95612": {
+      "path": "D:\\Dev\\Games\\gambling-mini-game\\assets\\sprites\\icons\\unmute_sound.png",
+      "time": 1774806203157.7854,
+      "removeTime": 1774806258023
     }
   }
 }

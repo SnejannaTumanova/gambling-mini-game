@@ -14,8 +14,6 @@ class GameStore {
 
 	private state: GameFlowState = GameFlowState.IDLE;
 
-	// ===== GETTERS =====
-
 	getBalance() {
 		return this.balance;
 	}
@@ -27,8 +25,6 @@ class GameStore {
 	getState() {
 		return this.state;
 	}
-
-	// ===== STATE UPDATE =====
 
 	setState(state: GameFlowState) {
 		this.state = state;
@@ -49,8 +45,6 @@ class GameStore {
 		this.bet.type = color;
 		eventBus.emit(GameEvents.COLOR_UPDATED, color);
 	}
-
-	// ===== INIT =====
 
 	init() {
 		eventBus.emit(GameEvents.BALANCE_CHANGED, this.balance);

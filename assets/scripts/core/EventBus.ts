@@ -1,44 +1,37 @@
-type Callback<T = any> = (payload: T) => void;
+import { EventPayloadMap, GameEventName } from './GameEvents';
 
-interface Listener<T = any> {
-	callback: Callback<T>;
-	target?: unknown;
-}
+type Callback<T> = (payload: T) => void;
 
 class EventBus {
-	private listeners: Map<string, Listener[]> = new Map();
+	private listeners: Partial<Record<GameEventName, Function[]>> = {};
 
-	on<T>(event: string, callback: Callback<T>, target?: unknown) {
-		if (!this.listeners.has(event)) {
-			this.listeners.set(event, []);
+	on<K extends GameEventName>(
+		event: K,
+		callback: Callback<EventPayloadMap[K]>,
+	) {
+		if (!this.listeners[event]) {
+			this.listeners[event] = [];
 		}
 
-		this.listeners.get(event)!.push({ callback, target });
+		this.listeners[event]!.push(callback);
 	}
 
-	off<T>(event: string, callback: Callback<T>, target?: unknown) {
-		const arr = this.listeners.get(event);
+	off<K extends GameEventName>(
+		event: K,
+		callback: Callback<EventPayloadMap[K]>,
+	) {
+		const arr = this.listeners[event];
 		if (!arr) return;
 
-		this.listeners.set(
-			event,
-			arr.filter(
-				(listener) =>
-					listener.callback !== callback || listener.target !== target,
-			),
-		);
+		this.listeners[event] = arr.filter((cb) => cb !== callback);
 	}
 
-	emit<T>(event: string, payload?: T) {
-		const arr = this.listeners.get(event);
+	emit<K extends GameEventName>(event: K, payload: EventPayloadMap[K]) {
+		const arr = this.listeners[event];
 		if (!arr) return;
 
-		arr.forEach((listener) => {
-			if (listener.target) {
-				listener.callback.call(listener.target, payload);
-			} else {
-				listener.callback(payload as T);
-			}
+		arr.forEach((cb) => {
+			(cb as Callback<EventPayloadMap[K]>)(payload);
 		});
 	}
 }

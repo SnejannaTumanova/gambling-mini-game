@@ -212,7 +212,15 @@
         "5e34b89d-40a8-4ec9-a3f4-f7f9269229f5",
         "84ecf150-eff4-48db-b247-17c8d842ba46",
         "685dad19-856c-412d-b64e-0025fa60c70c",
-        "ba0c4312-bb39-456a-a2ef-1d4f767e62db"
+        "ba0c4312-bb39-456a-a2ef-1d4f767e62db",
+        "d7a288a9-911e-4a1c-9d8b-e4f7c3a8bca4@f9941",
+        "b84a5928-ca54-4f73-a0ee-3fe0c3e891cc@f9941",
+        "f12a23c4-b924-4322-a260-3d982428f1e8@f9941",
+        "28765e2f-040a-4c65-8e8c-f9d0bb79d863@f9941",
+        "b124610c-88dd-4191-8179-169cb4ea47a1@f9941",
+        "6a328c25-c301-4b17-958a-4c48d31bd469@f9941",
+        "0fe2c7f4-c398-4fbe-a49a-22fafb662466@f9941",
+        "2e68f4e6-cca1-4870-9047-0c24bc2fde2e@f9941"
       ],
       "dependScripts": [
         "d6293d89-42d4-4fac-a02f-338695d7edea",
@@ -874,6 +882,154 @@
   "4e16df3f-49f7-41ff-a557-8031839115a5": {
     "url": "db://assets/resources",
     "value": {},
+    "versionCode": 1
+  },
+  "d7a288a9-911e-4a1c-9d8b-e4f7c3a8bca4": {
+    "url": "db://assets/sprites/icons/settings.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "d7a288a9-911e-4a1c-9d8b-e4f7c3a8bca4@6c48a": {
+    "url": "db://assets/sprites/icons/settings.png@6c48a",
+    "value": {
+      "depends": [
+        "d7a288a9-911e-4a1c-9d8b-e4f7c3a8bca4"
+      ]
+    },
+    "versionCode": 1
+  },
+  "d7a288a9-911e-4a1c-9d8b-e4f7c3a8bca4@f9941": {
+    "url": "db://assets/sprites/icons/settings.png@f9941",
+    "value": {
+      "depends": [
+        "d7a288a9-911e-4a1c-9d8b-e4f7c3a8bca4@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6a328c25-c301-4b17-958a-4c48d31bd469": {
+    "url": "db://assets/sprites/panels/settings_panel.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "6a328c25-c301-4b17-958a-4c48d31bd469@6c48a": {
+    "url": "db://assets/sprites/panels/settings_panel.png@6c48a",
+    "value": {
+      "depends": [
+        "6a328c25-c301-4b17-958a-4c48d31bd469"
+      ]
+    },
+    "versionCode": 1
+  },
+  "6a328c25-c301-4b17-958a-4c48d31bd469@f9941": {
+    "url": "db://assets/sprites/panels/settings_panel.png@f9941",
+    "value": {
+      "depends": [
+        "6a328c25-c301-4b17-958a-4c48d31bd469@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0fe2c7f4-c398-4fbe-a49a-22fafb662466": {
+    "url": "db://assets/sprites/icons/mute_sound.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "0fe2c7f4-c398-4fbe-a49a-22fafb662466@6c48a": {
+    "url": "db://assets/sprites/icons/mute_sound.png@6c48a",
+    "value": {
+      "depends": [
+        "0fe2c7f4-c398-4fbe-a49a-22fafb662466"
+      ]
+    },
+    "versionCode": 1
+  },
+  "0fe2c7f4-c398-4fbe-a49a-22fafb662466@f9941": {
+    "url": "db://assets/sprites/icons/mute_sound.png@f9941",
+    "value": {
+      "depends": [
+        "0fe2c7f4-c398-4fbe-a49a-22fafb662466@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b124610c-88dd-4191-8179-169cb4ea47a1": {
+    "url": "db://assets/sprites/icons/close.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "b124610c-88dd-4191-8179-169cb4ea47a1@6c48a": {
+    "url": "db://assets/sprites/icons/close.png@6c48a",
+    "value": {
+      "depends": [
+        "b124610c-88dd-4191-8179-169cb4ea47a1"
+      ]
+    },
+    "versionCode": 1
+  },
+  "b124610c-88dd-4191-8179-169cb4ea47a1@f9941": {
+    "url": "db://assets/sprites/icons/close.png@f9941",
+    "value": {
+      "depends": [
+        "b124610c-88dd-4191-8179-169cb4ea47a1@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "41bc1d5b-9d71-4993-956c-82ff71d95612": {
+    "url": "db://assets/sprites/icons/unmute_sound.png",
+    "value": {},
+    "versionCode": 1
+  },
+  "41bc1d5b-9d71-4993-956c-82ff71d95612@6c48a": {
+    "url": "db://assets/sprites/icons/unmute_sound.png@6c48a",
+    "value": {
+      "depends": [
+        "41bc1d5b-9d71-4993-956c-82ff71d95612"
+      ]
+    },
+    "versionCode": 1
+  },
+  "41bc1d5b-9d71-4993-956c-82ff71d95612@f9941": {
+    "url": "db://assets/sprites/icons/unmute_sound.png@f9941",
+    "value": {
+      "depends": [
+        "41bc1d5b-9d71-4993-956c-82ff71d95612@6c48a"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2e68f4e6-cca1-4870-9047-0c24bc2fde2e": {
+    "url": "db://assets/sprites/icons/unmute_sound.png",
+    "value": {
+      "depends": []
+    },
+    "versionCode": 1
+  },
+  "2e68f4e6-cca1-4870-9047-0c24bc2fde2e@6c48a": {
+    "url": "db://assets/sprites/icons/unmute_sound.png@6c48a",
+    "value": {
+      "depends": [
+        "2e68f4e6-cca1-4870-9047-0c24bc2fde2e"
+      ]
+    },
+    "versionCode": 1
+  },
+  "2e68f4e6-cca1-4870-9047-0c24bc2fde2e@f9941": {
+    "url": "db://assets/sprites/icons/unmute_sound.png@f9941",
+    "value": {
+      "depends": [
+        "2e68f4e6-cca1-4870-9047-0c24bc2fde2e@6c48a"
+      ]
+    },
     "versionCode": 1
   }
 }

@@ -54,15 +54,15 @@ export class WheelController extends Component {
 
 			opacity.opacity = 80; // при старте прозрачность 80, чтобы при запуске концентрировать внимание на яркости
 		}
-		eventBus.on(GameEvents.ROUND_STARTED, this.onRoundStarted, this);
+		eventBus.on(GameEvents.ROUND_STARTED, this.onRoundStarted);
 	}
 
-	private onRoundStarted({ outcome, prevBalance }: any) {
+	private onRoundStarted = ({ outcome, prevBalance }: any) => {
 		this.currentOutcome = outcome;
 		this.prevBalance = prevBalance;
 
 		this.spinTo(outcome.resultType);
-	}
+	};
 
 	spinTo(resultType: BetType) {
 		if (this.isSpinning) return;

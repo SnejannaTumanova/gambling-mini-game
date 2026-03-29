@@ -15,60 +15,39 @@ export class GameManager extends Component {
 	private gameService = new GameService(new RandomService());
 
 	start() {
-		eventBus.on(GameEvents.PLAY_REQUESTED, this.onPlayRequested, this);
-		eventBus.on(GameEvents.BET_CHANGE_REQUEST, this.onBetChangeRequested, this);
-		eventBus.on(
-			GameEvents.COLOR_CHANGE_REQUEST,
-			this.onColorChangeRequested,
-			this,
-		);
-		eventBus.on(
-			GameEvents.WHEEL_SPIN_COMPLETED,
-			this.onWheelSpinCompleted,
-			this,
-		);
+		eventBus.on(GameEvents.PLAY_REQUESTED, this.onPlayRequested);
+		eventBus.on(GameEvents.BET_CHANGE_REQUEST, this.onBetChangeRequested);
+		eventBus.on(GameEvents.COLOR_CHANGE_REQUEST, this.onColorChangeRequested);
+		eventBus.on(GameEvents.WHEEL_SPIN_COMPLETED, this.onWheelSpinCompleted);
 	}
 
 	onDestroy() {
-		eventBus.off(GameEvents.PLAY_REQUESTED, this.onPlayRequested, this);
-		eventBus.off(
-			GameEvents.BET_CHANGE_REQUEST,
-			this.onBetChangeRequested,
-			this,
-		);
-		eventBus.off(
-			GameEvents.COLOR_CHANGE_REQUEST,
-			this.onColorChangeRequested,
-			this,
-		);
-		eventBus.off(
-			GameEvents.WHEEL_SPIN_COMPLETED,
-			this.onWheelSpinCompleted,
-			this,
-		);
+		eventBus.off(GameEvents.PLAY_REQUESTED, this.onPlayRequested);
+		eventBus.off(GameEvents.BET_CHANGE_REQUEST, this.onBetChangeRequested);
+		eventBus.off(GameEvents.COLOR_CHANGE_REQUEST, this.onColorChangeRequested);
+		eventBus.off(GameEvents.WHEEL_SPIN_COMPLETED, this.onWheelSpinCompleted);
 	}
 
-	private onBetChangeRequested(delta: number) {
+	private onBetChangeRequested = (delta: number) => {
 		if (gameStore.getState() !== GameFlowState.IDLE) return;
 
 		const currentBet = gameStore.getBet();
 		const balance = gameStore.getBalance();
-
 		const nextAmount = currentBet.amount + delta;
 
 		if (nextAmount < GameConfig.RESET_BET) return;
 		if (nextAmount > balance) return;
 
 		gameStore.setBetAmount(nextAmount);
-	}
+	};
 
-	private onColorChangeRequested(color: BetType) {
+	private onColorChangeRequested = (color: BetType) => {
 		if (gameStore.getState() !== GameFlowState.IDLE) return;
 
 		gameStore.setColor(color);
-	}
+	};
 
-	private onPlayRequested() {
+	private onPlayRequested = (_payload: void) => {
 		if (gameStore.getState() !== GameFlowState.IDLE) return;
 
 		const balance = gameStore.getBalance();
@@ -82,21 +61,21 @@ export class GameManager extends Component {
 		gameStore.setState(GameFlowState.SPINNING);
 
 		const isWin = this.gameService.rollWin();
-
 		const outcome = this.gameService.resolveRound(balance, bet, isWin);
 
 		eventBus.emit(GameEvents.ROUND_STARTED, {
 			outcome,
 			prevBalance: balance,
 		});
-	}
+	};
 
-	private onWheelSpinCompleted(payload: {
+	private onWheelSpinCompleted = ({
+		outcome,
+		prevBalance,
+	}: {
 		outcome: RoundOutcome;
 		prevBalance: number;
-	}) {
-		const { outcome, prevBalance } = payload;
-
+	}) => {
 		gameStore.setState(GameFlowState.SHOWING_RESULT);
 
 		const previousBetAmount = gameStore.getBet().amount;
@@ -115,12 +94,10 @@ export class GameManager extends Component {
 		});
 
 		this.scheduleOnce(() => {
-			eventBus.emit(GameEvents.RESULT_HIDDEN);
+			eventBus.emit(GameEvents.RESULT_HIDDEN, undefined);
 			gameStore.setState(GameFlowState.IDLE);
 		}, GameConfig.RESULT_SHOW_DURATION);
-	}
-
-	// ===== Методы для кнопок из Cocos =====
+	};
 
 	onAdd10() {
 		eventBus.emit(GameEvents.BET_CHANGE_REQUEST, GameConfig.BET_STEP_SMALL);
@@ -144,6 +121,6 @@ export class GameManager extends Component {
 	}
 
 	onPlay() {
-		eventBus.emit(GameEvents.PLAY_REQUESTED);
+		eventBus.emit(GameEvents.PLAY_REQUESTED, undefined);
 	}
 }

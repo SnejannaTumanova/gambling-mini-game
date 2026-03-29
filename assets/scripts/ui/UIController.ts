@@ -11,7 +11,6 @@ import {
 	Color,
 	instantiate,
 	Prefab,
-	AudioSource,
 } from 'cc';
 import { BetType } from '../data/Types';
 import { GameConfig } from '../data/GameConfig';
@@ -19,12 +18,13 @@ import { eventBus } from '../core/EventBus';
 import { GameEvents } from '../core/GameEvents';
 import { GameFlowState } from '../core/GameFlowState';
 import { gameStore } from '../core/GameStore';
+import { audioService } from '../services/AudioService';
 
 const { ccclass, property } = _decorator;
 
 @ccclass('UIController')
 export class UIController extends Component {
-	@property(Label) balanceLabel: Label = null!; // ! = Сейчас null, но в редакторе Cocos я обязательно подставлю ссылки.
+	@property(Label) balanceLabel: Label = null!;
 	@property(Label) betLabel: Label = null!;
 
 	@property(Node) resultRoot: Node = null!;
@@ -44,32 +44,63 @@ export class UIController extends Component {
 	@property(Node) coinsRoot: Node = null!;
 	@property(Prefab) coinPrefab: Prefab = null!;
 
-	private currentBalance: number = 0;
-	private currentBet: number = 0;
+	@property(Node) soundOnIcon: Node = null!;
+	@property(Node) soundOffIcon: Node = null!;
+
+	@property(Node) settingsPanel: Node = null!;
+
+	private currentBalance = 0;
+	private currentBet = 0;
 	private selectedColor: BetType | null = 'red';
-	private isInteractionEnabled: boolean = true;
+	private isInteractionEnabled = true;
 
 	start() {
-		// подписки на store
-		eventBus.on(GameEvents.BALANCE_CHANGED, this.updateBalance, this);
-		eventBus.on(GameEvents.BET_UPDATED, this.updateBet, this);
-		eventBus.on(GameEvents.COLOR_UPDATED, this.updateSelectedColor, this);
-
-		eventBus.on(GameEvents.RESULT_READY, this.onResultReady, this);
-		eventBus.on(GameEvents.RESULT_HIDDEN, this.hideResult, this);
-		eventBus.on(GameEvents.STATE_CHANGED, this.onStateChanged, this);
+		eventBus.on(GameEvents.BALANCE_CHANGED, this.updateBalance);
+		eventBus.on(GameEvents.BET_UPDATED, this.updateBet);
+		eventBus.on(GameEvents.COLOR_UPDATED, this.updateSelectedColor);
+		eventBus.on(GameEvents.RESULT_READY, this.onResultReady);
+		eventBus.on(GameEvents.RESULT_HIDDEN, this.onResultHidden);
+		eventBus.on(GameEvents.STATE_CHANGED, this.onStateChanged);
 
 		this.hideResult();
 		this.playIdleAnimation();
 
-		this.overlayBlocker && (this.overlayBlocker.active = false);
+		if (this.overlayBlocker) {
+			this.overlayBlocker.active = false;
+		}
 
 		this.updateBalance(gameStore.getBalance());
 		this.updateBet(gameStore.getBet().amount);
 		this.updateSelectedColor(gameStore.getBet().type);
+
+		eventBus.on(GameEvents.SOUND_TOGGLE, this.updateSoundUI);
+		eventBus.on(GameEvents.SETTINGS_TOGGLE, this.toggleSettingsPanel);
+
+		this.updateSoundUI();
 	}
 
-	private onResultReady({ isWin, amount, prevBalance, newBalance }: any) {
+	onDestroy() {
+		eventBus.off(GameEvents.BALANCE_CHANGED, this.updateBalance);
+		eventBus.off(GameEvents.BET_UPDATED, this.updateBet);
+		eventBus.off(GameEvents.COLOR_UPDATED, this.updateSelectedColor);
+		eventBus.off(GameEvents.RESULT_READY, this.onResultReady);
+		eventBus.off(GameEvents.RESULT_HIDDEN, this.onResultHidden);
+		eventBus.off(GameEvents.STATE_CHANGED, this.onStateChanged);
+		eventBus.off(GameEvents.SOUND_TOGGLE, this.updateSoundUI);
+		eventBus.off(GameEvents.SETTINGS_TOGGLE, this.toggleSettingsPanel);
+	}
+
+	private onResultReady = ({
+		isWin,
+		amount,
+		prevBalance,
+		newBalance,
+	}: {
+		isWin: boolean;
+		amount: number;
+		prevBalance: number;
+		newBalance: number;
+	}) => {
 		if (isWin) {
 			this.animateBalance(prevBalance, newBalance);
 		} else {
@@ -77,9 +108,13 @@ export class UIController extends Component {
 		}
 
 		this.showResult(isWin, amount);
-	}
+	};
 
-	private onStateChanged(state: GameFlowState) {
+	private onResultHidden = (_payload: void) => {
+		this.hideResult();
+	};
+
+	private onStateChanged = (state: GameFlowState) => {
 		const isIdle = state === GameFlowState.IDLE;
 
 		this.setInteractionEnabled(isIdle);
@@ -87,23 +122,25 @@ export class UIController extends Component {
 		if (state === GameFlowState.SPINNING) {
 			this.hideResult();
 		}
-	}
+	};
 
-	// =====================
-	// DATA UPDATE
-	// =====================
-
-	updateBalance(value: number) {
+	updateBalance = (value: number) => {
 		this.currentBalance = value;
-		this.balanceLabel.string = value.toLocaleString(); // не 1000, а 1 000 - так красивее
-	}
+		this.balanceLabel.string = value.toLocaleString();
+	};
 
-	updateBet(value: number) {
+	updateBet = (value: number) => {
 		this.currentBet = value;
-		this.betLabel.string = value.toString(); //пропустила, надо было для общего UI - тоже toLocaleString()
+		this.betLabel.string = value.toString();
+		this.refreshBetControls();
+	};
 
-		this.refreshBetControls(); //доступность кнопок повышения ставки
-	}
+	updateSelectedColor = (color: BetType) => {
+		this.selectedColor = color;
+
+		this.animateColorButton(this.redButton.node, color === 'red');
+		this.animateColorButton(this.blackButton.node, color === 'black');
+	};
 
 	private refreshBetControls() {
 		const available = this.currentBalance - this.currentBet;
@@ -116,36 +153,28 @@ export class UIController extends Component {
 		this.setButtonState(this.add50Button, available >= GameConfig.BET_STEP_BIG);
 	}
 
-	// =====================
-	// BALANCE
-	// =====================
-
 	animateBalance(
 		from: number,
 		to: number,
 		duration: number = GameConfig.BALANCE_ANIMATION_DURATION,
 	) {
-		const obj = { value: from }; //промежуточный объект, потому что напрямую строку анимировать нельзя, где from - начальная стадия
+		const obj = { value: from };
 
 		tween(obj)
 			.to(
 				duration,
-				{ value: to }, // to - результат к которому мы должны прийти
+				{ value: to },
 				{
 					onUpdate: () => {
-						this.balanceLabel.string = Math.floor(obj.value).toLocaleString(); // каждый кадр рисуем промежуточное число
+						this.balanceLabel.string = Math.floor(obj.value).toLocaleString();
 					},
 				},
 			)
 			.start();
 	}
 
-	// =====================
-	// RESULT
-	// =====================
-
 	showResult(isWin: boolean, amount: number) {
-		this.resultRoot.active = true; //включаем popup результата.
+		this.resultRoot.active = true;
 
 		this.animateResultBackground();
 
@@ -159,13 +188,11 @@ export class UIController extends Component {
 	}
 
 	private playResultAnimation(isWin: boolean) {
-		this.unscheduleAllCallbacks(); // удаляем старые отложенные вызовы
-		Tween.stopAllByTarget(this.resultRoot); // останавливаем старые анимации popup
+		this.unscheduleAllCallbacks();
+		Tween.stopAllByTarget(this.resultRoot);
 
 		this.resultRoot.setPosition(0, 0, 0);
-
 		this.resultRoot.setScale(
-			// начальный Scale popup, перед появлением
 			new Vec3(
 				GameConfig.RESULT_POPUP_START_SCALE,
 				GameConfig.RESULT_POPUP_START_SCALE,
@@ -173,34 +200,31 @@ export class UIController extends Component {
 			),
 		);
 
-		let opacity = this.resultRoot.getComponent(UIOpacity); // получаем компонент прозрачности
+		let opacity = this.resultRoot.getComponent(UIOpacity);
 		if (!opacity) {
-			opacity = this.resultRoot.addComponent(UIOpacity); // если его нет - создаем
+			opacity = this.resultRoot.addComponent(UIOpacity);
 		}
 
 		opacity.opacity = 0;
 
-		// анимация появления текста ( 2 анимации scale animation + fade animation параллельно)
 		tween(this.resultRoot)
 			.to(GameConfig.RESULT_POPUP_BOUNCE_IN_1, {
-				scale: new Vec3( //чуть больше, чем должен быть = как бы резиновое появление - motion
+				scale: new Vec3(
 					GameConfig.RESULT_POPUP_MID_SCALE,
 					GameConfig.RESULT_POPUP_MID_SCALE,
 					1,
 				),
 			})
 			.to(GameConfig.RESULT_POPUP_BOUNCE_IN_2, {
-				scale: Vec3.ONE, // норма
+				scale: Vec3.ONE,
 			})
 			.start();
 
-		tween(opacity).to(GameConfig.FADE_DURATION, { opacity: 255 }).start(); // при этом текст плавно становится видимым
+		tween(opacity).to(GameConfig.FADE_DURATION, { opacity: 255 }).start();
 
-		// WIN
 		if (isWin) {
 			tween(this.resultAmountLabel.node)
 				.repeatForever(
-					// сумма выигрыша бесконечно пульсирует, а за время отвечает таймер в onSpinComplete внутри GameManager
 					tween()
 						.to(GameConfig.WIN_AMOUNT_PULSE_DURATION, {
 							scale: new Vec3(
@@ -214,12 +238,8 @@ export class UIController extends Component {
 						}),
 				)
 				.start();
-		}
-
-		// LOSE
-		else {
+		} else {
 			this.scheduleOnce(() => {
-				// задержка, для анимации , чтобы пользователь успел прочитать инфо, можно было сделать через .delay
 				tween(this.resultRoot)
 					.to(GameConfig.LOSE_DROP_DURATION, {
 						position: new Vec3(0, GameConfig.LOSE_DROP_Y, 0),
@@ -239,17 +259,17 @@ export class UIController extends Component {
 	}
 
 	hideResult() {
-		//Полностью очищаем состояние popup результата.
 		this.resultRoot.active = false;
 
 		this.unscheduleAllCallbacks();
-
 		this.resultRoot.setPosition(0, 0, 0);
 
 		Tween.stopAllByTarget(this.resultAmountLabel.node);
 		Tween.stopAllByTarget(this.resultLabel.node);
 		Tween.stopAllByTarget(this.resultRoot);
-		this.resultBackground && Tween.stopAllByTarget(this.resultBackground);
+		if (this.resultBackground) {
+			Tween.stopAllByTarget(this.resultBackground);
+		}
 	}
 
 	private animateResultBackground() {
@@ -264,7 +284,9 @@ export class UIController extends Component {
 		bgOpacity.opacity = 0;
 
 		tween(bgOpacity)
-			.to(GameConfig.FADE_DURATION, { opacity: GameConfig.OVERLAY_OPACITY })
+			.to(GameConfig.FADE_DURATION, {
+				opacity: GameConfig.OVERLAY_OPACITY,
+			})
 			.start();
 
 		this.resultBackground.setScale(new Vec3(0.9, 0.9, 1));
@@ -278,38 +300,26 @@ export class UIController extends Component {
 		this.resultLabel.string = 'YOU WIN';
 		this.resultAmountLabel.string = `+${amount}`;
 
-		this.resultLabel.color = new Color(255, 215, 0); // золотой текст
+		this.resultLabel.color = new Color(255, 215, 0);
 		this.resultAmountLabel.color = new Color(255, 215, 0);
 
-		this.spawnCoins(); // + монетки
+		this.spawnCoins();
 	}
 
 	private setLoseState(amount: number) {
 		this.resultLabel.string = 'YOU LOSE';
 		this.resultAmountLabel.string = `-${amount}`;
 
-		this.resultLabel.color = new Color(30, 30, 30); // тёмно-серый цвет
+		this.resultLabel.color = new Color(30, 30, 30);
 		this.resultAmountLabel.color = new Color(30, 30, 30);
 	}
 
-	// =====================
-	// COLOR SELECTION
-	// =====================
-
-	updateSelectedColor(color: BetType | null) {
-		//отвечает за анимацию выбранной кнопки цвета
-		this.selectedColor = color;
-
-		this.animateColorButton(this.redButton.node, color === 'red');
-		this.animateColorButton(this.blackButton.node, color === 'black');
-	}
-
 	private animateColorButton(node: Node, isActive: boolean) {
-		Tween.stopAllByTarget(node); // останавливаем прежнюю анимацию
+		Tween.stopAllByTarget(node);
 
-		node.setScale(Vec3.ONE); // возвращаем скейл в норму
+		node.setScale(Vec3.ONE);
 
-		if (!isActive) return; // если эта кнопка не активна, то это всё, а если это выбранная кнопка, то назначаем ей новую анимацию
+		if (!isActive) return;
 
 		node.setScale(new Vec3(1.2, 1.2, 1));
 
@@ -322,12 +332,7 @@ export class UIController extends Component {
 			.start();
 	}
 
-	// =====================
-	// INTERACTION
-	// =====================
-
 	setInteractionEnabled(enabled: boolean) {
-		//выключаем кнопки + включаем overlay
 		this.isInteractionEnabled = enabled;
 
 		const buttons = [
@@ -339,10 +344,10 @@ export class UIController extends Component {
 			this.blackButton,
 		];
 
-		buttons.forEach((btn) => this.setButtonState(btn, enabled)); // вкл/выкл все кнопки
+		buttons.forEach((btn) => this.setButtonState(btn, enabled));
 
 		if (enabled) {
-			this.refreshBetControls(); // корректировка по доступности кнопок увеличения ставки
+			this.refreshBetControls();
 		}
 
 		this.handleOverlay(enabled);
@@ -358,53 +363,51 @@ export class UIController extends Component {
 			this.overlayBlocker.addComponent(UIOpacity);
 
 		if (!enabled) {
-			// плавно появляется
 			opacity.opacity = 0;
 
 			tween(opacity)
-				.to(GameConfig.FADE_DURATION, { opacity: GameConfig.OVERLAY_OPACITY })
+				.to(GameConfig.FADE_DURATION, {
+					opacity: GameConfig.OVERLAY_OPACITY,
+				})
 				.start();
 		} else {
-			// плавно исчезает
 			tween(opacity)
 				.to(GameConfig.FADE_DURATION, { opacity: 0 })
 				.call(() => {
 					this.overlayBlocker.active = false;
-					this.playIdleAnimation(); // снова включаем дыхание кнопки PLAY
+					this.playIdleAnimation();
 				})
 				.start();
 		}
 	}
 
 	private setButtonState(button: Button | null, enabled: boolean) {
-		if (!button) return; // защита от отсутствующей ссылки.
+		if (!button) return;
 
 		const node = button.node;
-		button.interactable = enabled; //логическое вкл/выкл кнопки
+		button.interactable = enabled;
 
 		const opacity =
 			node.getComponent(UIOpacity) || node.addComponent(UIOpacity);
 
-		Tween.stopAllByTarget(opacity); //стоп старую анимацию, если она ещё идёт
+		Tween.stopAllByTarget(opacity);
 
 		tween(opacity)
 			.to(GameConfig.FADE_DURATION, {
-				opacity: enabled ? 255 : GameConfig.DISABLED_OPACITY, // прозрачность для enabled = 255, для не enabled = 140
+				opacity: enabled ? 255 : GameConfig.DISABLED_OPACITY,
 			})
 			.start();
 
-		if (!enabled) node.setScale(Vec3.ONE); // в выкл состоянии все кнопки стандарного одинакового размера
+		if (!enabled) {
+			node.setScale(Vec3.ONE);
+		}
 	}
-
-	// =====================
-	// HOVER
-	// =====================
 
 	private addHoverEffect(button: Button) {
 		const node = button.node;
 
 		node.on(Node.EventType.MOUSE_ENTER, () => {
-			if (!button.interactable) return; // если кнопка не активна, то никакой реакции
+			if (!button.interactable) return;
 
 			Tween.stopAllByTarget(node);
 
@@ -415,17 +418,11 @@ export class UIController extends Component {
 
 		node.on(Node.EventType.MOUSE_LEAVE, () => {
 			Tween.stopAllByTarget(node);
-
 			tween(node).to(0.1, { scale: Vec3.ONE }).start();
 		});
 	}
 
-	// =====================
-	// MISC
-	// =====================
-
 	private playIdleAnimation() {
-		// дыхание кнопки PLAY
 		const node = this.playButton.node;
 
 		Tween.stopAllByTarget(node);
@@ -440,37 +437,63 @@ export class UIController extends Component {
 	}
 
 	playButtonClickAnimation() {
-		// растягивание кнопки при клике
 		const node = this.playButton.node;
 
 		tween(node)
-			.to(0.08, { scale: new Vec3(0.95, 0.95, 1) }) // кнопка сначла слегка вдавливается
-			.to(0.08, { scale: new Vec3(1.05, 1.05, 1) }) // потом чуть подпрыгивает
-			.to(0.08, { scale: Vec3.ONE }) // потом возвращается в норму
+			.to(0.08, { scale: new Vec3(0.95, 0.95, 1) })
+			.to(0.08, { scale: new Vec3(1.05, 1.05, 1) })
+			.to(0.08, { scale: Vec3.ONE })
 			.start();
 	}
 
 	private spawnCoins() {
-		if (!this.coinsRoot || !this.coinPrefab) return; // только если есть префаб
+		if (!this.coinsRoot || !this.coinPrefab) return;
 
 		for (let i = 0; i < 8; i++) {
-			// создаём 8 монеток для анимации получения выигрыша
-			const coin = instantiate(this.coinPrefab); // клонируем 8 монгеток из префаба, можно при масштабировании использовать object pooling
-			this.coinsRoot.addChild(coin); // добавляем на сцену
+			const coin = instantiate(this.coinPrefab);
+			this.coinsRoot.addChild(coin);
 
-			const randomX = (Math.random() - 0.5) * 200; // случайная траектория разброса монеток по X оси
-			const randomY = 150 + Math.random() * 100; // случайная траектория разброса монеток по Y оси
+			const randomX = (Math.random() - 0.5) * 200;
+			const randomY = 150 + Math.random() * 100;
 
 			tween(coin)
 				.to(0.6, {
-					position: new Vec3(randomX, randomY, 0), // монетка вылетает вверх/в сторону
+					position: new Vec3(randomX, randomY, 0),
 					scale: Vec3.ONE,
 				})
 				.to(0.3, {
-					position: new Vec3(randomX, randomY - 200, 0), // потом падает ниже
+					position: new Vec3(randomX, randomY - 200, 0),
 				})
-				.call(() => coin.destroy()) //после окончания анимации удаляется
+				.call(() => coin.destroy())
 				.start();
 		}
 	}
+
+	onToggleSound() {
+		eventBus.emit(GameEvents.SOUND_TOGGLE, undefined);
+	}
+
+	onVolumeChanged(slider: any) {
+		const value = slider.progress * 2;
+		eventBus.emit(GameEvents.VOLUME_CHANGED, value);
+	}
+
+	openSettings() {
+		eventBus.emit(GameEvents.SETTINGS_TOGGLE, undefined);
+	}
+
+	closeSettings() {
+		eventBus.emit(GameEvents.SETTINGS_TOGGLE, undefined);
+	}
+
+	private updateSoundUI = () => {
+		const isMuted = audioService.isMuted();
+
+		this.soundOnIcon.active = !isMuted;
+		this.soundOffIcon.active = isMuted;
+	};
+
+	private toggleSettingsPanel = () => {
+		this.settingsPanel.active = !this.settingsPanel.active;
+	};
 }
