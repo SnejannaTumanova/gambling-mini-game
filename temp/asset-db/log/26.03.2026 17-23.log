@@ -1,892 +1,0 @@
-26.03.2026 17:23:20-log: Cannot access game frame or container.
-26.03.2026 17:23:20-debug: asset-db:require-engine-code (1635ms)
-26.03.2026 17:23:21-log: meshopt wasm decoder initialized
-26.03.2026 17:23:21-log: [bullet]:bullet wasm lib loaded.
-26.03.2026 17:23:21-log: [box2d]:box2d wasm lib loaded.
-26.03.2026 17:23:21-log: Cocos Creator v3.8.6
-26.03.2026 17:23:21-log: Using legacy pipeline
-26.03.2026 17:23:21-debug: [Assets Memory track]: asset-db-plugin-register: programming start:80.80MB, end 84.22MB, increase: 3.43MB
-26.03.2026 17:23:21-log: Forward render pipeline initialized.
-26.03.2026 17:23:21-debug: [Assets Memory track]: asset-db:worker-init: initEngine start:31.36MB, end 79.93MB, increase: 48.57MB
-26.03.2026 17:23:23-debug: [Assets Memory track]: asset-db-plugin-register: builder start:84.26MB, end 270.02MB, increase: 185.76MB
-26.03.2026 17:23:23-debug: [Assets Memory track]: asset-db-plugin-register: project start:80.65MB, end 271.17MB, increase: 190.52MB
-26.03.2026 17:23:23-debug: [Assets Memory track]: asset-db:worker-init: initPlugin start:79.96MB, end 271.20MB, increase: 191.25MB
-26.03.2026 17:23:23-debug: asset-db:worker-init: initPlugin (2500ms)
-26.03.2026 17:23:23-debug: [Assets Memory track]: asset-db:worker-init start:31.35MB, end 170.96MB, increase: 139.61MB
-26.03.2026 17:23:23-debug: Run asset db hook programming:beforePreStart ...
-26.03.2026 17:23:23-debug: Run asset db hook programming:beforePreStart success!
-26.03.2026 17:23:23-debug: Run asset db hook engine-extends:beforePreStart success!
-26.03.2026 17:23:23-debug: Run asset db hook engine-extends:beforePreStart ...
-26.03.2026 17:23:26-debug: asset-db:worker-init (7472ms)
-26.03.2026 17:23:26-debug: asset-db-hook-programming-beforePreStart (2964ms)
-26.03.2026 17:23:26-debug: asset-db-hook-engine-extends-beforePreStart (2963ms)
-26.03.2026 17:23:28-debug: Preimport db internal success
-26.03.2026 17:23:28-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\core\GameManager.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 17:23:28-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\services\GameService.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 17:23:28-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\game\WheelController.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 17:23:28-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\ui\UIController.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 17:23:28-debug: Preimport db assets success
-26.03.2026 17:23:28-debug: Run asset db hook programming:afterPreStart ...
-26.03.2026 17:23:28-debug: starting packer-driver...
-26.03.2026 17:23:30-debug: initialize scripting environment...
-26.03.2026 17:23:30-debug: [[Executor]] prepare before lock
-26.03.2026 17:23:30-debug: Set detail map pack:///resolution-detail-map.json: {}
-26.03.2026 17:23:30-debug: [[Executor]] prepare after unlock
-26.03.2026 17:23:30-debug: Run asset db hook programming:afterPreStart success!
-26.03.2026 17:23:30-debug: Run asset db hook engine-extends:afterPreStart success!
-26.03.2026 17:23:30-debug: Run asset db hook engine-extends:afterPreStart ...
-26.03.2026 17:23:30-debug: [Assets Memory track]: asset-db:worker-init: preStart start:170.97MB, end 173.31MB, increase: 2.34MB
-26.03.2026 17:23:30-debug: Start up the 'internal' database...
-26.03.2026 17:23:32-debug: asset-db-hook-programming-afterPreStart (3605ms)
-26.03.2026 17:23:32-debug: asset-db-hook-engine-extends-afterPreStart (1827ms)
-26.03.2026 17:23:32-debug: asset-db:worker-effect-data-processing (1826ms)
-26.03.2026 17:23:32-debug: [Assets Memory track]: asset-db:worker-startup-database[internal] start:171.07MB, end 189.10MB, increase: 18.03MB
-26.03.2026 17:23:32-debug: Start up the 'assets' database...
-26.03.2026 17:23:32-debug: asset-db:worker-startup-database[internal] (8869ms)
-26.03.2026 17:23:32-debug: [Assets Memory track]: asset-db:worker-startup-database[assets] start:176.65MB, end 189.68MB, increase: 13.03MB
-26.03.2026 17:23:32-debug: lazy register asset handler *
-26.03.2026 17:23:32-debug: [Assets Memory track]: asset-db:worker-init: startup start:173.33MB, end 189.69MB, increase: 16.37MB
-26.03.2026 17:23:32-debug: lazy register asset handler directory
-26.03.2026 17:23:32-debug: lazy register asset handler spine-data
-26.03.2026 17:23:32-debug: lazy register asset handler dragonbones
-26.03.2026 17:23:32-debug: lazy register asset handler dragonbones-atlas
-26.03.2026 17:23:32-debug: lazy register asset handler text
-26.03.2026 17:23:32-debug: lazy register asset handler terrain
-26.03.2026 17:23:32-debug: lazy register asset handler javascript
-26.03.2026 17:23:32-debug: lazy register asset handler scene
-26.03.2026 17:23:32-debug: lazy register asset handler typescript
-26.03.2026 17:23:32-debug: lazy register asset handler prefab
-26.03.2026 17:23:32-debug: lazy register asset handler sprite-frame
-26.03.2026 17:23:32-debug: lazy register asset handler buffer
-26.03.2026 17:23:32-debug: lazy register asset handler json
-26.03.2026 17:23:32-debug: lazy register asset handler tiled-map
-26.03.2026 17:23:32-debug: lazy register asset handler sign-image
-26.03.2026 17:23:32-debug: lazy register asset handler alpha-image
-26.03.2026 17:23:32-debug: lazy register asset handler texture-cube
-26.03.2026 17:23:32-debug: lazy register asset handler texture
-26.03.2026 17:23:32-debug: lazy register asset handler erp-texture-cube
-26.03.2026 17:23:32-debug: lazy register asset handler image
-26.03.2026 17:23:32-debug: lazy register asset handler render-texture
-26.03.2026 17:23:32-debug: lazy register asset handler rt-sprite-frame
-26.03.2026 17:23:32-debug: lazy register asset handler texture-cube-face
-26.03.2026 17:23:32-debug: lazy register asset handler gltf-animation
-26.03.2026 17:23:32-debug: lazy register asset handler gltf-mesh
-26.03.2026 17:23:32-debug: lazy register asset handler gltf-material
-26.03.2026 17:23:32-debug: lazy register asset handler gltf-skeleton
-26.03.2026 17:23:32-debug: lazy register asset handler gltf-scene
-26.03.2026 17:23:32-debug: lazy register asset handler gltf-embeded-image
-26.03.2026 17:23:32-debug: lazy register asset handler gltf
-26.03.2026 17:23:32-debug: lazy register asset handler material
-26.03.2026 17:23:32-debug: lazy register asset handler physics-material
-26.03.2026 17:23:32-debug: lazy register asset handler effect
-26.03.2026 17:23:32-debug: lazy register asset handler effect-header
-26.03.2026 17:23:32-debug: lazy register asset handler audio-clip
-26.03.2026 17:23:32-debug: lazy register asset handler animation-graph
-26.03.2026 17:23:32-debug: lazy register asset handler animation-clip
-26.03.2026 17:23:32-debug: lazy register asset handler animation-graph-variant
-26.03.2026 17:23:32-debug: lazy register asset handler fbx
-26.03.2026 17:23:32-debug: lazy register asset handler animation-mask
-26.03.2026 17:23:32-debug: lazy register asset handler particle
-26.03.2026 17:23:32-debug: lazy register asset handler ttf-font
-26.03.2026 17:23:32-debug: lazy register asset handler bitmap-font
-26.03.2026 17:23:32-debug: lazy register asset handler auto-atlas
-26.03.2026 17:23:32-debug: lazy register asset handler label-atlas
-26.03.2026 17:23:32-debug: lazy register asset handler render-pipeline
-26.03.2026 17:23:32-debug: lazy register asset handler render-flow
-26.03.2026 17:23:32-debug: lazy register asset handler render-stage
-26.03.2026 17:23:32-debug: lazy register asset handler instantiation-material
-26.03.2026 17:23:32-debug: lazy register asset handler instantiation-skeleton
-26.03.2026 17:23:32-debug: lazy register asset handler instantiation-mesh
-26.03.2026 17:23:32-debug: lazy register asset handler instantiation-animation
-26.03.2026 17:23:32-debug: lazy register asset handler sprite-atlas
-26.03.2026 17:23:32-debug: lazy register asset handler video-clip
-26.03.2026 17:23:32-debug: asset-db:worker-startup-database[assets] (4595ms)
-26.03.2026 17:23:32-debug: asset-db:start-database (8975ms)
-26.03.2026 17:23:32-debug: asset-db:ready (19915ms)
-26.03.2026 17:23:32-debug: fix the bug of updateDefaultUserData
-26.03.2026 17:23:32-debug: init worker message success
-26.03.2026 17:23:32-debug: programming:execute-script (12ms)
-26.03.2026 17:23:33-debug: [Build Memory track]: builder:worker-init start:187.72MB, end 201.52MB, increase: 13.80MB
-26.03.2026 17:23:33-debug: builder:worker-init (755ms)
-26.03.2026 17:23:50-debug: refresh db internal success
-26.03.2026 17:23:50-debug: refresh db assets success
-26.03.2026 17:23:50-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 17:23:50-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 17:23:50-debug: asset-db:refresh-all-database (142ms)
-26.03.2026 17:23:50-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 17:23:50-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 17:23:56-debug: refresh db internal success
-26.03.2026 17:23:56-debug: refresh db assets success
-26.03.2026 17:23:56-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 17:23:56-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 17:23:56-debug: asset-db:refresh-all-database (129ms)
-26.03.2026 17:23:56-debug: asset-db:worker-effect-data-processing (3ms)
-26.03.2026 17:23:56-debug: asset-db-hook-engine-extends-afterRefresh (3ms)
-26.03.2026 17:24:00-debug: Query all assets info in project
-26.03.2026 17:24:00-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 17:24:00-debug: Skip compress image, progress: 0%
-26.03.2026 17:24:00-debug: Init all bundles start..., progress: 0%
-26.03.2026 17:24:00-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 17:24:00-debug: Query asset bundle start, progress: 0%
-26.03.2026 17:24:00-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 17:24:00-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:24:00-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 17:24:00-debug:   Number of all scripts: 21
-26.03.2026 17:24:00-debug:   Number of other assets: 353
-26.03.2026 17:24:00-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 17:24:00-debug:   Number of all scenes: 1
-26.03.2026 17:24:00-debug: // ---- build task Query asset bundle ---- (8ms)
-26.03.2026 17:24:00-log: run build task Query asset bundle success in 8 ms√, progress: 5%
-26.03.2026 17:24:00-debug: [Build Memory track]: Query asset bundle start:198.01MB, end 198.65MB, increase: 655.79KB
-26.03.2026 17:24:00-debug: Query asset bundle start, progress: 5%
-26.03.2026 17:24:00-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:24:00-debug: // ---- build task Query asset bundle ---- (4ms)
-26.03.2026 17:24:00-log: run build task Query asset bundle success in 4 ms√, progress: 10%
-26.03.2026 17:24:00-debug: [Build Memory track]: Query asset bundle start:198.69MB, end 198.78MB, increase: 93.66KB
-26.03.2026 17:24:00-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:24:00-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 17:24:00-debug: // ---- build task Sort some build options to settings.json ---- (1ms)
-26.03.2026 17:24:00-log: run build task Sort some build options to settings.json success in 1 ms√, progress: 12%
-26.03.2026 17:24:00-debug: [Build Memory track]: Sort some build options to settings.json start:198.82MB, end 198.85MB, increase: 30.58KB
-26.03.2026 17:24:00-debug: Fill script data to settings start, progress: 12%
-26.03.2026 17:24:00-debug: // ---- build task Fill script data to settings ----
-26.03.2026 17:24:00-debug: // ---- build task Fill script data to settings ---- (1ms)
-26.03.2026 17:24:00-log: run build task Fill script data to settings success in 1 ms√, progress: 13%
-26.03.2026 17:24:00-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 17:24:00-debug: [Build Memory track]: Fill script data to settings start:198.88MB, end 198.91MB, increase: 30.66KB
-26.03.2026 17:24:00-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:24:00-debug: // ---- build task Sort some build options to settings.json ---- (5ms)
-26.03.2026 17:24:00-log: run build task Sort some build options to settings.json success in 5 ms√, progress: 15%
-26.03.2026 17:24:00-debug: [Build Memory track]: Sort some build options to settings.json start:198.94MB, end 199.09MB, increase: 147.25KB
-26.03.2026 17:25:46-debug: refresh db internal success
-26.03.2026 17:25:46-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\core\GameManager.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 17:25:46-debug: refresh db assets success
-26.03.2026 17:25:46-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 17:25:46-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 17:25:46-debug: asset-db:refresh-all-database (133ms)
-26.03.2026 17:25:46-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 17:25:46-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 17:25:47-debug: Query all assets info in project
-26.03.2026 17:25:47-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 17:25:47-debug: Skip compress image, progress: 0%
-26.03.2026 17:25:47-debug: Init all bundles start..., progress: 0%
-26.03.2026 17:25:47-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 17:25:47-debug: Query asset bundle start, progress: 0%
-26.03.2026 17:25:47-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 17:25:47-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:25:47-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 17:25:47-debug:   Number of all scenes: 1
-26.03.2026 17:25:47-debug:   Number of all scripts: 21
-26.03.2026 17:25:47-debug:   Number of other assets: 353
-26.03.2026 17:25:47-debug: // ---- build task Query asset bundle ---- (6ms)
-26.03.2026 17:25:47-log: run build task Query asset bundle success in 6 ms√, progress: 5%
-26.03.2026 17:25:47-debug: Query asset bundle start, progress: 5%
-26.03.2026 17:25:47-debug: [Build Memory track]: Query asset bundle start:199.44MB, end 199.27MB, increase: -178.96KB
-26.03.2026 17:25:47-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:25:47-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 17:25:47-debug: // ---- build task Query asset bundle ---- (3ms)
-26.03.2026 17:25:47-debug: [Build Memory track]: Query asset bundle start:199.30MB, end 199.40MB, increase: 95.57KB
-26.03.2026 17:25:47-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 17:25:47-log: run build task Query asset bundle success in 3 ms√, progress: 10%
-26.03.2026 17:25:47-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:25:47-log: run build task Sort some build options to settings.json success in √, progress: 12%
-26.03.2026 17:25:47-debug: // ---- build task Fill script data to settings ----
-26.03.2026 17:25:47-debug: [Build Memory track]: Sort some build options to settings.json start:199.44MB, end 199.46MB, increase: 19.96KB
-26.03.2026 17:25:47-debug: Fill script data to settings start, progress: 12%
-26.03.2026 17:25:47-debug: // ---- build task Fill script data to settings ---- (1ms)
-26.03.2026 17:25:47-log: run build task Fill script data to settings success in 1 ms√, progress: 13%
-26.03.2026 17:25:47-debug: [Build Memory track]: Fill script data to settings start:199.49MB, end 199.53MB, increase: 34.29KB
-26.03.2026 17:25:47-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 17:25:47-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:25:47-debug: // ---- build task Sort some build options to settings.json ---- (4ms)
-26.03.2026 17:25:47-log: run build task Sort some build options to settings.json success in 4 ms√, progress: 15%
-26.03.2026 17:25:47-debug: [Build Memory track]: Sort some build options to settings.json start:199.56MB, end 199.69MB, increase: 133.00KB
-26.03.2026 17:28:37-debug: refresh db internal success
-26.03.2026 17:28:37-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\core\GameManager.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 17:28:37-debug: refresh db assets success
-26.03.2026 17:28:37-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 17:28:37-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 17:28:37-debug: asset-db:refresh-all-database (133ms)
-26.03.2026 17:28:37-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 17:28:37-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 17:28:38-debug: Query all assets info in project
-26.03.2026 17:28:38-debug: Skip compress image, progress: 0%
-26.03.2026 17:28:38-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 17:28:38-debug: Init all bundles start..., progress: 0%
-26.03.2026 17:28:38-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 17:28:38-debug: Query asset bundle start, progress: 0%
-26.03.2026 17:28:38-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:28:38-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 17:28:38-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 17:28:38-debug:   Number of all scenes: 1
-26.03.2026 17:28:38-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 17:28:38-debug:   Number of all scripts: 21
-26.03.2026 17:28:38-debug:   Number of other assets: 353
-26.03.2026 17:28:38-debug: // ---- build task Query asset bundle ---- (8ms)
-26.03.2026 17:28:38-log: run build task Query asset bundle success in 8 ms√, progress: 5%
-26.03.2026 17:28:38-debug: [Build Memory track]: Query asset bundle start:200.78MB, end 201.37MB, increase: 611.54KB
-26.03.2026 17:28:38-debug: Query asset bundle start, progress: 5%
-26.03.2026 17:28:38-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:28:38-debug: // ---- build task Query asset bundle ---- (2ms)
-26.03.2026 17:28:38-log: run build task Query asset bundle success in 2 ms√, progress: 10%
-26.03.2026 17:28:38-debug: [Build Memory track]: Query asset bundle start:201.41MB, end 200.73MB, increase: -694.38KB
-26.03.2026 17:28:38-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:28:38-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 17:28:38-log: run build task Sort some build options to settings.json success in √, progress: 12%
-26.03.2026 17:28:38-debug: [Build Memory track]: Sort some build options to settings.json start:200.76MB, end 200.78MB, increase: 19.61KB
-26.03.2026 17:28:38-debug: // ---- build task Fill script data to settings ----
-26.03.2026 17:28:38-debug: Fill script data to settings start, progress: 12%
-26.03.2026 17:28:38-debug: // ---- build task Fill script data to settings ---- (1ms)
-26.03.2026 17:28:38-log: run build task Fill script data to settings success in 1 ms√, progress: 13%
-26.03.2026 17:28:38-debug: [Build Memory track]: Fill script data to settings start:200.82MB, end 200.85MB, increase: 30.62KB
-26.03.2026 17:28:38-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:28:38-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 17:28:38-debug: // ---- build task Sort some build options to settings.json ---- (5ms)
-26.03.2026 17:28:38-log: run build task Sort some build options to settings.json success in 5 ms√, progress: 15%
-26.03.2026 17:28:38-debug: [Build Memory track]: Sort some build options to settings.json start:200.88MB, end 201.03MB, increase: 149.11KB
-26.03.2026 17:29:05-debug: refresh db internal success
-26.03.2026 17:29:05-debug: refresh db assets success
-26.03.2026 17:29:05-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 17:29:05-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 17:29:05-debug: asset-db:refresh-all-database (121ms)
-26.03.2026 17:29:05-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 17:29:05-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 17:50:43-debug: Query all assets info in project
-26.03.2026 17:50:43-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 17:50:43-debug: Skip compress image, progress: 0%
-26.03.2026 17:50:43-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 17:50:43-debug: Init all bundles start..., progress: 0%
-26.03.2026 17:50:43-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:50:43-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 17:50:43-debug: Query asset bundle start, progress: 0%
-26.03.2026 17:50:43-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 17:50:43-debug:   Number of all scripts: 21
-26.03.2026 17:50:43-debug:   Number of other assets: 353
-26.03.2026 17:50:43-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 17:50:43-debug:   Number of all scenes: 1
-26.03.2026 17:50:43-debug: // ---- build task Query asset bundle ---- (6ms)
-26.03.2026 17:50:43-log: run build task Query asset bundle success in 6 ms√, progress: 5%
-26.03.2026 17:50:43-debug: [Build Memory track]: Query asset bundle start:202.45MB, end 202.14MB, increase: -313.34KB
-26.03.2026 17:50:43-debug: // ---- build task Query asset bundle ----
-26.03.2026 17:50:43-debug: Query asset bundle start, progress: 5%
-26.03.2026 17:50:43-debug: // ---- build task Query asset bundle ---- (2ms)
-26.03.2026 17:50:43-log: run build task Query asset bundle success in 2 ms√, progress: 10%
-26.03.2026 17:50:43-debug: [Build Memory track]: Query asset bundle start:202.17MB, end 202.28MB, increase: 111.44KB
-26.03.2026 17:50:43-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:50:43-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 17:50:43-debug: // ---- build task Sort some build options to settings.json ---- (1ms)
-26.03.2026 17:50:43-log: run build task Sort some build options to settings.json success in 1 ms√, progress: 12%
-26.03.2026 17:50:43-debug: [Build Memory track]: Sort some build options to settings.json start:202.30MB, end 202.33MB, increase: 26.45KB
-26.03.2026 17:50:43-debug: // ---- build task Fill script data to settings ----
-26.03.2026 17:50:43-debug: Fill script data to settings start, progress: 12%
-26.03.2026 17:50:43-debug: // ---- build task Fill script data to settings ---- (1ms)
-26.03.2026 17:50:43-debug: [Build Memory track]: Fill script data to settings start:202.36MB, end 202.38MB, increase: 25.89KB
-26.03.2026 17:50:43-log: run build task Fill script data to settings success in 1 ms√, progress: 13%
-26.03.2026 17:50:43-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 17:50:43-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 17:50:43-debug: // ---- build task Sort some build options to settings.json ---- (3ms)
-26.03.2026 17:50:43-log: run build task Sort some build options to settings.json success in 3 ms√, progress: 15%
-26.03.2026 17:50:43-debug: [Build Memory track]: Sort some build options to settings.json start:202.41MB, end 202.53MB, increase: 127.00KB
-26.03.2026 18:33:12-debug: refresh db internal success
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\core\GameManager.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\game\AudioController.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\game\FullscreenController.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\services\GameService.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\services\RandomService.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\strategies\ResultStrategy.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\strategies\WinStrategy.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\strategies\LoseStrategy.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:33:12-debug: refresh db assets success
-26.03.2026 18:33:12-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:33:12-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:33:12-debug: asset-db:refresh-all-database (139ms)
-26.03.2026 18:33:12-debug: asset-db:worker-effect-data-processing (3ms)
-26.03.2026 18:33:12-debug: asset-db-hook-engine-extends-afterRefresh (3ms)
-26.03.2026 18:33:13-debug: Query all assets info in project
-26.03.2026 18:33:13-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 18:33:13-debug: Skip compress image, progress: 0%
-26.03.2026 18:33:13-debug: Init all bundles start..., progress: 0%
-26.03.2026 18:33:13-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 18:33:13-debug: Query asset bundle start, progress: 0%
-26.03.2026 18:33:13-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 18:33:13-debug: // ---- build task Query asset bundle ----
-26.03.2026 18:33:13-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 18:33:13-debug:   Number of all scripts: 21
-26.03.2026 18:33:13-debug:   Number of other assets: 353
-26.03.2026 18:33:13-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 18:33:13-debug:   Number of all scenes: 1
-26.03.2026 18:33:13-log: run build task Query asset bundle success in 6 ms√, progress: 5%
-26.03.2026 18:33:13-debug: [Build Memory track]: Query asset bundle start:203.49MB, end 204.05MB, increase: 570.66KB
-26.03.2026 18:33:13-debug: Query asset bundle start, progress: 5%
-26.03.2026 18:33:13-debug: // ---- build task Query asset bundle ----
-26.03.2026 18:33:13-debug: // ---- build task Query asset bundle ---- (6ms)
-26.03.2026 18:33:13-debug: // ---- build task Query asset bundle ---- (4ms)
-26.03.2026 18:33:13-log: run build task Query asset bundle success in 4 ms√, progress: 10%
-26.03.2026 18:33:13-debug: [Build Memory track]: Query asset bundle start:204.07MB, end 203.39MB, increase: -695.64KB
-26.03.2026 18:33:13-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 18:33:13-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 18:33:13-debug: // ---- build task Sort some build options to settings.json ---- (1ms)
-26.03.2026 18:33:13-log: run build task Sort some build options to settings.json success in 1 ms√, progress: 12%
-26.03.2026 18:33:13-debug: [Build Memory track]: Sort some build options to settings.json start:203.42MB, end 203.45MB, increase: 35.30KB
-26.03.2026 18:33:13-debug: // ---- build task Fill script data to settings ----
-26.03.2026 18:33:13-debug: Fill script data to settings start, progress: 12%
-26.03.2026 18:33:13-debug: // ---- build task Fill script data to settings ---- (1ms)
-26.03.2026 18:33:13-log: run build task Fill script data to settings success in 1 ms√, progress: 13%
-26.03.2026 18:33:13-debug: [Build Memory track]: Fill script data to settings start:203.48MB, end 203.51MB, increase: 25.91KB
-26.03.2026 18:33:13-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 18:33:13-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 18:33:13-debug: // ---- build task Sort some build options to settings.json ---- (4ms)
-26.03.2026 18:33:13-log: run build task Sort some build options to settings.json success in 4 ms√, progress: 15%
-26.03.2026 18:33:13-debug: [Build Memory track]: Sort some build options to settings.json start:203.53MB, end 203.66MB, increase: 127.41KB
-26.03.2026 18:38:31-debug: refresh db internal success
-26.03.2026 18:38:31-debug: refresh db assets success
-26.03.2026 18:38:31-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:38:31-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:38:31-debug: asset-db:refresh-all-database (119ms)
-26.03.2026 18:38:31-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:38:31-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:39:14-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\weel-glow.effect...
-26.03.2026 18:39:14-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\weel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:39:15-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets success
-26.03.2026 18:39:16-debug: recompile effect.bin success
-26.03.2026 18:39:18-debug: start move asset from D:\Dev\Games\gambling-mini-game\assets\weel-glow.effect -> D:\Dev\Games\gambling-mini-game\assets\materials\weel-glow.effect...
-26.03.2026 18:39:18-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\weel-glow.effect...
-26.03.2026 18:39:18-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\weel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:39:19-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 18:39:19-debug: move asset from D:\Dev\Games\gambling-mini-game\assets\weel-glow.effect -> D:\Dev\Games\gambling-mini-game\assets\materials\weel-glow.effect success
-26.03.2026 18:39:19-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets...
-26.03.2026 18:39:19-debug: refresh asset D:\Dev\Games\gambling-mini-game success
-26.03.2026 18:39:19-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:39:19-debug: recompile effect.bin success
-26.03.2026 18:40:50-debug: start move asset from D:\Dev\Games\gambling-mini-game\assets\materials\weel-glow.effect -> D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effect...
-26.03.2026 18:40:50-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effect...
-26.03.2026 18:40:50-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:40:50-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 18:40:50-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials...
-26.03.2026 18:40:50-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:40:50-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets success
-26.03.2026 18:40:50-debug: move asset from D:\Dev\Games\gambling-mini-game\assets\materials\weel-glow.effect -> D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effect success
-26.03.2026 18:40:51-debug: recompile effect.bin success
-26.03.2026 18:41:54-debug: refresh db internal success
-26.03.2026 18:41:54-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:41:54-error: ../materials/wheel-glow.effect - vert: Error EFX2403: entry function 'main' not found.
-26.03.2026 18:41:54-debug: refresh db assets success
-26.03.2026 18:41:54-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:41:54-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:41:54-debug: asset-db:refresh-all-database (214ms)
-26.03.2026 18:41:54-debug: asset-db:worker-effect-data-processing (72ms)
-26.03.2026 18:41:54-debug: asset-db-hook-engine-extends-afterRefresh (72ms)
-26.03.2026 18:42:06-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:42:06-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtl...
-26.03.2026 18:42:06-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 18:42:06-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:42:57-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:42:57-debug: asset-db:reimport-asset601a0704-65ef-4ade-8289-d7b4f70ebdb7 (14ms)
-26.03.2026 18:42:57-debug: refresh db internal success
-26.03.2026 18:42:57-debug: refresh db assets success
-26.03.2026 18:42:57-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:42:57-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:42:57-debug: asset-db:refresh-all-database (124ms)
-26.03.2026 18:42:57-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:42:57-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:43:31-debug: refresh db internal success
-26.03.2026 18:43:31-debug: refresh db assets success
-26.03.2026 18:43:31-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:43:31-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:43:31-debug: asset-db:refresh-all-database (117ms)
-26.03.2026 18:43:31-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:43:31-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:44:16-debug: refresh db internal success
-26.03.2026 18:44:16-debug: refresh db assets success
-26.03.2026 18:44:16-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:44:16-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:44:16-debug: asset-db:refresh-all-database (118ms)
-26.03.2026 18:44:16-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:44:16-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:44:38-debug: refresh db internal success
-26.03.2026 18:44:38-debug: refresh db assets success
-26.03.2026 18:44:38-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:44:38-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:44:38-debug: asset-db:refresh-all-database (115ms)
-26.03.2026 18:44:38-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:44:38-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:46:00-debug: refresh db internal success
-26.03.2026 18:46:00-debug: refresh db assets success
-26.03.2026 18:46:00-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:46:00-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:46:00-debug: asset-db:refresh-all-database (113ms)
-26.03.2026 18:46:00-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:46:00-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:46:09-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scenes\Main.scenebackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:46:09-debug: asset-db:reimport-asset7c3b3c5a-08bc-4acd-a671-0609bb3d8341 (18ms)
-26.03.2026 18:46:10-debug: Query all assets info in project
-26.03.2026 18:46:10-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 18:46:10-debug: Skip compress image, progress: 0%
-26.03.2026 18:46:10-debug: Init all bundles start..., progress: 0%
-26.03.2026 18:46:10-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 18:46:10-debug: Query asset bundle start, progress: 0%
-26.03.2026 18:46:10-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 18:46:10-debug: // ---- build task Query asset bundle ----
-26.03.2026 18:46:10-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 18:46:10-debug:   Number of all scripts: 21
-26.03.2026 18:46:10-debug:   Number of other assets: 354
-26.03.2026 18:46:10-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 18:46:10-debug:   Number of all scenes: 1
-26.03.2026 18:46:10-debug: // ---- build task Query asset bundle ---- (9ms)
-26.03.2026 18:46:10-log: run build task Query asset bundle success in 9 ms√, progress: 5%
-26.03.2026 18:46:10-debug: Query asset bundle start, progress: 5%
-26.03.2026 18:46:10-debug: [Build Memory track]: Query asset bundle start:211.82MB, end 212.41MB, increase: 601.41KB
-26.03.2026 18:46:10-debug: // ---- build task Query asset bundle ----
-26.03.2026 18:46:10-debug: // ---- build task Query asset bundle ---- (3ms)
-26.03.2026 18:46:10-log: run build task Query asset bundle success in 3 ms√, progress: 10%
-26.03.2026 18:46:10-debug: [Build Memory track]: Query asset bundle start:212.43MB, end 211.78MB, increase: -672.73KB
-26.03.2026 18:46:10-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 18:46:10-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 18:46:10-debug: // ---- build task Sort some build options to settings.json ---- (1ms)
-26.03.2026 18:46:10-log: run build task Sort some build options to settings.json success in 1 ms√, progress: 12%
-26.03.2026 18:46:10-debug: Fill script data to settings start, progress: 12%
-26.03.2026 18:46:10-debug: [Build Memory track]: Sort some build options to settings.json start:211.80MB, end 211.83MB, increase: 28.90KB
-26.03.2026 18:46:10-debug: // ---- build task Fill script data to settings ----
-26.03.2026 18:46:10-debug: // ---- build task Fill script data to settings ---- (1ms)
-26.03.2026 18:46:10-debug: [Build Memory track]: Fill script data to settings start:211.86MB, end 211.88MB, increase: 26.08KB
-26.03.2026 18:46:10-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 18:46:10-log: run build task Fill script data to settings success in 1 ms√, progress: 13%
-26.03.2026 18:46:10-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 18:46:10-debug: // ---- build task Sort some build options to settings.json ---- (10ms)
-26.03.2026 18:46:10-log: run build task Sort some build options to settings.json success in 10 ms√, progress: 15%
-26.03.2026 18:46:10-debug: [Build Memory track]: Sort some build options to settings.json start:211.91MB, end 212.04MB, increase: 130.97KB
-26.03.2026 18:46:49-debug: refresh db internal success
-26.03.2026 18:46:49-debug: refresh db assets success
-26.03.2026 18:46:49-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:46:49-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:46:49-debug: asset-db:refresh-all-database (118ms)
-26.03.2026 18:46:49-debug: asset-db:worker-effect-data-processing (2ms)
-26.03.2026 18:46:49-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:48:16-debug: refresh db internal success
-26.03.2026 18:48:16-debug: refresh db assets success
-26.03.2026 18:48:16-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:48:16-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:48:16-debug: asset-db:refresh-all-database (111ms)
-26.03.2026 18:48:16-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:48:16-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:49:47-debug: refresh db internal success
-26.03.2026 18:49:47-error: ../materials/wheel-glow.effect - fs - 7: Error EFX2201: vector uniforms must be declared in blocks. ↓↓↓↓↓ EXPAND THIS MESSAGE FOR MORE INFO ↓↓↓↓↓2	precision highp float;4	in vec2 v_uv;6	uniform sampler2D mainTexture;7	uniform vec4 glowColor;8	uniform float glowStrength;9	uniform float shimmerStrength;10	uniform float rippleStrength;11	uniform float noiseStrength;12	uniform float speed;13	uniform float time;15	float hash(vec2 p) {16	  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);17	}19	float noise(vec2 p) {20	  vec2 i = floor(p);21	  vec2 f = fract(p);23	  float a = hash(i);24	  float b = hash(i + vec2(1.0, 0.0));25	  float c = hash(i + vec2(0.0, 1.0));26	  float d = hash(i + vec2(1.0, 1.0));28	  vec2 u = f * f * (3.0 - 2.0 * f);30	  return mix(a, b, u.x)31	       + (c - a) * u.y * (1.0 - u.x)32	       + (d - b) * u.x * u.y;33	}35	void main () {36	  vec2 uv = v_uv;38	  vec2 centered = uv - vec2(0.5);40	  float dist = length(centered);41	  float ripple = sin(dist * 20.0 - time * 4.0 * speed) * rippleStrength;43	  float shimmer = sin((uv.x + uv.y) * 12.0 - time * 5.0 * speed) * shimmerStrength;45	  float n = noise(uv * 6.0 + time * 0.8 * speed) * noiseStrength;47	  vec2 warpedUV = uv + centered * ripple * 0.08;49	  vec4 tex = texture(mainTexture, warpedUV);51	  float edgeMask = smoothstep(0.15, 0.75, dist);53	  float glowPulse = 0.5 + 0.5 * sin(time * 3.0 * speed);54	  float glow = glowStrength * glowPulse + shimmer + n;56	  vec3 finalRgb = tex.rgb + glowColor.rgb * glow * edgeMask;58	  gl_FragColor = vec4(finalRgb, tex.a);59	}60	(eof)
-26.03.2026 18:49:47-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:49:47-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scripts\game\WheelController.tsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:49:47-debug: refresh db assets success
-26.03.2026 18:49:47-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:49:47-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:49:47-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:49:47-debug: asset-db:refresh-all-database (130ms)
-26.03.2026 18:49:47-debug: asset-db:worker-effect-data-processing (2ms)
-26.03.2026 18:49:47-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:49:48-debug: Query all assets info in project
-26.03.2026 18:49:48-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 18:49:48-debug: Skip compress image, progress: 0%
-26.03.2026 18:49:48-debug: Init all bundles start..., progress: 0%
-26.03.2026 18:49:48-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 18:49:48-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 18:49:48-debug: // ---- build task Query asset bundle ----
-26.03.2026 18:49:48-debug: Query asset bundle start, progress: 0%
-26.03.2026 18:49:48-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 18:49:48-debug:   Number of all scenes: 1
-26.03.2026 18:49:48-debug:   Number of all scripts: 21
-26.03.2026 18:49:48-debug:   Number of other assets: 354
-26.03.2026 18:49:48-debug: // ---- build task Query asset bundle ---- (5ms)
-26.03.2026 18:49:48-log: run build task Query asset bundle success in 5 ms√, progress: 5%
-26.03.2026 18:49:48-debug: [Build Memory track]: Query asset bundle start:215.33MB, end 215.10MB, increase: -233.22KB
-26.03.2026 18:49:48-debug: // ---- build task Query asset bundle ----
-26.03.2026 18:49:48-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 18:49:48-debug: Query asset bundle start, progress: 5%
-26.03.2026 18:49:48-debug: // ---- build task Query asset bundle ---- (2ms)
-26.03.2026 18:49:48-log: run build task Query asset bundle success in 2 ms√, progress: 10%
-26.03.2026 18:49:48-debug: [Build Memory track]: Query asset bundle start:215.12MB, end 215.22MB, increase: 97.48KB
-26.03.2026 18:49:48-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 18:49:48-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 18:49:48-debug: // ---- build task Sort some build options to settings.json ---- (1ms)
-26.03.2026 18:49:48-log: run build task Sort some build options to settings.json success in 1 ms√, progress: 12%
-26.03.2026 18:49:48-debug: [Build Memory track]: Sort some build options to settings.json start:215.25MB, end 215.28MB, increase: 29.53KB
-26.03.2026 18:49:48-debug: Fill script data to settings start, progress: 12%
-26.03.2026 18:49:48-debug: // ---- build task Fill script data to settings ----
-26.03.2026 18:49:48-debug: // ---- build task Fill script data to settings ---- (2ms)
-26.03.2026 18:49:48-log: run build task Fill script data to settings success in 2 ms√, progress: 13%
-26.03.2026 18:49:48-debug: [Build Memory track]: Fill script data to settings start:215.31MB, end 215.35MB, increase: 41.50KB
-26.03.2026 18:49:48-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 18:49:48-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 18:49:48-log: run build task Sort some build options to settings.json success in 4 ms√, progress: 15%
-26.03.2026 18:49:48-debug: [Build Memory track]: Sort some build options to settings.json start:215.37MB, end 215.49MB, increase: 127.30KB
-26.03.2026 18:49:48-debug: // ---- build task Sort some build options to settings.json ---- (4ms)
-26.03.2026 18:50:06-debug: refresh db internal success
-26.03.2026 18:50:06-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:50:06-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:50:06-debug: refresh db assets success
-26.03.2026 18:50:06-debug: asset-db:refresh-all-database (119ms)
-26.03.2026 18:50:06-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:50:06-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:50:25-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:50:25-error: ../materials/wheel-glow.effect - fs - 7: Error EFX2201: vector uniforms must be declared in blocks. ↓↓↓↓↓ EXPAND THIS MESSAGE FOR MORE INFO ↓↓↓↓↓2	precision highp float;4	in vec2 v_uv;6	uniform sampler2D mainTexture;7	uniform vec4 glowColor;8	uniform float glowStrength;9	uniform float shimmerStrength;10	uniform float rippleStrength;11	uniform float noiseStrength;12	uniform float speed;13	uniform float time;15	float hash(vec2 p) {16	  return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123);17	}19	float noise(vec2 p) {20	  vec2 i = floor(p);21	  vec2 f = fract(p);23	  float a = hash(i);24	  float b = hash(i + vec2(1.0, 0.0));25	  float c = hash(i + vec2(0.0, 1.0));26	  float d = hash(i + vec2(1.0, 1.0));28	  vec2 u = f * f * (3.0 - 2.0 * f);30	  return mix(a, b, u.x)31	       + (c - a) * u.y * (1.0 - u.x)32	       + (d - b) * u.x * u.y;33	}35	void main () {36	  vec2 uv = v_uv;38	  vec2 centered = uv - vec2(0.5);40	  float dist = length(centered);41	  float ripple = sin(dist * 20.0 - time * 4.0 * speed) * rippleStrength;43	  float shimmer = sin((uv.x + uv.y) * 12.0 - time * 5.0 * speed) * shimmerStrength;45	  float n = noise(uv * 6.0 + time * 0.8 * speed) * noiseStrength;47	  vec2 warpedUV = uv + centered * ripple * 0.08;49	  vec4 tex = texture(mainTexture, warpedUV);51	  float edgeMask = smoothstep(0.15, 0.75, dist);53	  float glowPulse = 0.5 + 0.5 * sin(time * 3.0 * speed);54	  float glow = glowStrength * glowPulse + shimmer + n;56	  vec3 finalRgb = tex.rgb + glowColor.rgb * glow * edgeMask;58	  gl_FragColor = vec4(finalRgb, tex.a);59	}60	(eof)
-26.03.2026 18:50:25-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:50:25-debug: asset-db:reimport-asset8265a641-645f-44a9-8b76-8fb572e8f2a9 (8ms)
-26.03.2026 18:50:43-debug: refresh db internal success
-26.03.2026 18:50:43-debug: refresh db assets success
-26.03.2026 18:50:43-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:50:43-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:50:43-debug: asset-db:refresh-all-database (121ms)
-26.03.2026 18:50:43-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:50:43-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:50:53-debug: refresh db internal success
-26.03.2026 18:50:53-debug: refresh db assets success
-26.03.2026 18:50:53-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:50:53-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:50:53-debug: asset-db:refresh-all-database (114ms)
-26.03.2026 18:50:53-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:50:53-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:51:11-debug: refresh db internal success
-26.03.2026 18:51:11-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:51:11-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:51:11-debug: refresh db assets success
-26.03.2026 18:51:11-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:51:11-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:51:11-debug: asset-db:refresh-all-database (117ms)
-26.03.2026 18:51:22-debug: refresh db internal success
-26.03.2026 18:51:23-debug: refresh db assets success
-26.03.2026 18:51:23-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:51:23-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:51:23-debug: asset-db:refresh-all-database (174ms)
-26.03.2026 18:51:23-debug: asset-db:worker-effect-data-processing (2ms)
-26.03.2026 18:51:23-debug: asset-db-hook-engine-extends-afterRefresh (3ms)
-26.03.2026 18:51:47-debug: refresh db internal success
-26.03.2026 18:51:47-debug: refresh db assets success
-26.03.2026 18:51:47-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:51:47-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:51:47-debug: asset-db:refresh-all-database (111ms)
-26.03.2026 18:51:47-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:52:00-debug: refresh db internal success
-26.03.2026 18:52:00-debug: refresh db assets success
-26.03.2026 18:52:00-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:52:00-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:52:00-debug: asset-db:refresh-all-database (127ms)
-26.03.2026 18:52:00-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:52:00-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:53:37-debug: refresh db internal success
-26.03.2026 18:53:37-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:53:37-debug: refresh db assets success
-26.03.2026 18:53:37-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:53:37-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:53:37-debug: asset-db:refresh-all-database (157ms)
-26.03.2026 18:53:38-debug: recompile effect.bin success
-26.03.2026 18:53:38-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:53:38-debug: asset-db:worker-effect-data-processing (500ms)
-26.03.2026 18:53:38-debug: asset-db-hook-engine-extends-afterRefresh (501ms)
-26.03.2026 18:53:51-debug: refresh db internal success
-26.03.2026 18:53:51-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:53:51-debug: refresh db assets success
-26.03.2026 18:53:51-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:53:51-debug: asset-db:refresh-all-database (131ms)
-26.03.2026 18:53:51-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 18:53:51-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:53:51-debug: recompile effect.bin success
-26.03.2026 18:53:51-debug: asset-db:worker-effect-data-processing (439ms)
-26.03.2026 18:53:51-debug: asset-db-hook-engine-extends-afterRefresh (439ms)
-26.03.2026 18:53:55-debug: refresh db internal success
-26.03.2026 18:53:55-debug: refresh db assets success
-26.03.2026 18:53:55-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:53:55-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:53:55-debug: asset-db:refresh-all-database (109ms)
-26.03.2026 18:53:55-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:53:55-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:54:35-debug: refresh db internal success
-26.03.2026 18:54:35-debug: refresh db assets success
-26.03.2026 18:54:35-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:54:35-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:54:35-debug: asset-db:refresh-all-database (109ms)
-26.03.2026 18:54:35-debug: asset-db:worker-effect-data-processing (2ms)
-26.03.2026 18:54:35-debug: asset-db-hook-engine-extends-afterRefresh (3ms)
-26.03.2026 18:55:03-debug: refresh db internal success
-26.03.2026 18:55:03-debug: refresh db assets success
-26.03.2026 18:55:03-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:55:03-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:55:03-debug: asset-db:refresh-all-database (109ms)
-26.03.2026 18:55:03-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:55:03-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:55:17-debug: refresh db internal success
-26.03.2026 18:55:17-debug: refresh db assets success
-26.03.2026 18:55:17-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:55:17-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:55:17-debug: asset-db:refresh-all-database (117ms)
-26.03.2026 18:55:17-debug: asset-db:worker-effect-data-processing (2ms)
-26.03.2026 18:55:17-debug: asset-db-hook-engine-extends-afterRefresh (3ms)
-26.03.2026 18:55:32-debug: refresh db internal success
-26.03.2026 18:55:32-debug: refresh db assets success
-26.03.2026 18:55:32-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:55:32-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:55:32-debug: asset-db:refresh-all-database (153ms)
-26.03.2026 18:55:32-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:55:32-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:55:46-debug: refresh db internal success
-26.03.2026 18:55:46-debug: refresh db assets success
-26.03.2026 18:55:46-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:55:46-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:55:46-debug: asset-db:refresh-all-database (110ms)
-26.03.2026 18:55:46-debug: asset-db:worker-effect-data-processing (2ms)
-26.03.2026 18:55:46-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:55:59-debug: refresh db internal success
-26.03.2026 18:55:59-debug: refresh db assets success
-26.03.2026 18:55:59-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:55:59-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:55:59-debug: asset-db:refresh-all-database (119ms)
-26.03.2026 18:55:59-debug: asset-db:worker-effect-data-processing (2ms)
-26.03.2026 18:55:59-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 18:56:10-debug: refresh db internal success
-26.03.2026 18:56:10-debug: refresh db assets success
-26.03.2026 18:56:10-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:56:10-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:56:10-debug: asset-db:refresh-all-database (110ms)
-26.03.2026 18:56:10-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:56:10-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:56:22-debug: refresh db internal success
-26.03.2026 18:56:22-debug: refresh db assets success
-26.03.2026 18:56:22-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:56:22-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:56:22-debug: asset-db:refresh-all-database (112ms)
-26.03.2026 18:56:22-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 18:56:22-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 18:56:48-debug: refresh db internal success
-26.03.2026 18:56:48-debug: refresh db assets success
-26.03.2026 18:56:48-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 18:56:48-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 18:56:48-debug: asset-db:refresh-all-database (123ms)
-26.03.2026 18:56:48-debug: asset-db:worker-effect-data-processing (3ms)
-26.03.2026 18:56:48-debug: asset-db-hook-engine-extends-afterRefresh (3ms)
-26.03.2026 19:00:10-debug: refresh db internal success
-26.03.2026 19:00:10-debug: refresh db assets success
-26.03.2026 19:00:10-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:00:10-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:00:10-debug: asset-db:refresh-all-database (111ms)
-26.03.2026 19:00:10-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 19:00:10-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 19:00:16-debug: refresh db internal success
-26.03.2026 19:00:16-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:00:16-error: ../materials/wheel-glow.effect - fs: Error EFX2302: fragment output location must be specified
-26.03.2026 19:00:16-debug: refresh db assets success
-26.03.2026 19:00:16-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:00:16-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:00:16-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:00:16-debug: asset-db:refresh-all-database (129ms)
-26.03.2026 19:00:16-debug: asset-db:worker-effect-data-processing (4ms)
-26.03.2026 19:00:16-debug: asset-db-hook-engine-extends-afterRefresh (4ms)
-26.03.2026 19:00:29-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:00:29-error: ../materials/wheel-glow.effect - fs: Error EFX2302: fragment output location must be specified
-26.03.2026 19:00:29-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:00:29-debug: asset-db:reimport-asset8265a641-645f-44a9-8b76-8fb572e8f2a9 (13ms)
-26.03.2026 19:02:41-debug: refresh db internal success
-26.03.2026 19:02:41-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:02:41-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:02:41-debug: refresh db assets success
-26.03.2026 19:02:41-debug: asset-db:refresh-all-database (152ms)
-26.03.2026 19:02:41-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:02:42-debug: recompile effect.bin success
-26.03.2026 19:02:42-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:02:42-debug: asset-db:worker-effect-data-processing (495ms)
-26.03.2026 19:02:42-debug: asset-db-hook-engine-extends-afterRefresh (495ms)
-26.03.2026 19:02:53-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:02:53-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:02:53-debug: asset-db:reimport-asset8265a641-645f-44a9-8b76-8fb572e8f2a9 (29ms)
-26.03.2026 19:02:53-debug: recompile effect.bin success
-26.03.2026 19:07:22-debug: refresh db internal success
-26.03.2026 19:07:22-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:07:22-debug: refresh db assets success
-26.03.2026 19:07:22-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:07:22-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:07:22-debug: asset-db:refresh-all-database (134ms)
-26.03.2026 19:07:23-debug: recompile effect.bin success
-26.03.2026 19:07:23-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:07:23-debug: asset-db:worker-effect-data-processing (418ms)
-26.03.2026 19:07:23-debug: asset-db-hook-engine-extends-afterRefresh (419ms)
-26.03.2026 19:07:40-debug: programming:execute-script (1ms)
-26.03.2026 19:07:42-debug: start remove asset D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtl...
-26.03.2026 19:07:42-debug: refresh db internal success
-26.03.2026 19:07:42-debug: %cDestroy%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #ffb8b8; color: #000;color: #000;
-26.03.2026 19:07:42-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:07:42-debug: refresh db assets success
-26.03.2026 19:07:42-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:07:42-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:07:42-debug: asset-db:refresh-all-database (112ms)
-26.03.2026 19:07:42-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 19:07:42-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 19:07:42-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtl...
-26.03.2026 19:07:42-debug: remove asset D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtl success
-26.03.2026 19:07:42-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 19:07:54-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl...
-26.03.2026 19:07:54-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:07:54-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 19:07:54-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:08:20-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:08:20-debug: asset-db:reimport-asseta035ec9c-26d9-4a2f-b52f-21b71d5fdc88 (13ms)
-26.03.2026 19:08:21-debug: refresh db internal success
-26.03.2026 19:08:21-debug: refresh db assets success
-26.03.2026 19:08:21-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:08:21-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:08:21-debug: asset-db:refresh-all-database (114ms)
-26.03.2026 19:08:21-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 19:08:21-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 19:10:29-debug: refresh db internal success
-26.03.2026 19:10:29-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:10:29-debug: refresh db assets success
-26.03.2026 19:10:29-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:10:29-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:10:29-debug: asset-db:refresh-all-database (126ms)
-26.03.2026 19:10:29-debug: recompile effect.bin success
-26.03.2026 19:10:29-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:10:29-debug: asset-db:worker-effect-data-processing (423ms)
-26.03.2026 19:10:29-debug: asset-db-hook-engine-extends-afterRefresh (424ms)
-26.03.2026 19:13:04-debug: refresh db internal success
-26.03.2026 19:13:04-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:13:04-debug: refresh db assets success
-26.03.2026 19:13:04-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:13:04-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:13:04-debug: asset-db:refresh-all-database (149ms)
-26.03.2026 19:13:05-debug: recompile effect.bin success
-26.03.2026 19:13:05-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:13:05-debug: asset-db:worker-effect-data-processing (460ms)
-26.03.2026 19:13:05-debug: asset-db-hook-engine-extends-afterRefresh (460ms)
-26.03.2026 19:13:09-debug: start remove asset D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl...
-26.03.2026 19:13:09-debug: refresh db internal success
-26.03.2026 19:13:09-debug: %cDestroy%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #ffb8b8; color: #000;color: #000;
-26.03.2026 19:13:09-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:13:09-debug: refresh db assets success
-26.03.2026 19:13:09-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:13:09-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:13:09-debug: asset-db:refresh-all-database (113ms)
-26.03.2026 19:13:09-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 19:13:09-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 19:13:09-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl...
-26.03.2026 19:13:09-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 19:13:09-debug: remove asset D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl success
-26.03.2026 19:13:18-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl...
-26.03.2026 19:13:18-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:13:18-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 19:13:19-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:13:25-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scenes\Main.scenebackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:13:25-debug: asset-db:reimport-asset7c3b3c5a-08bc-4acd-a671-0609bb3d8341 (19ms)
-26.03.2026 19:13:26-debug: Query all assets info in project
-26.03.2026 19:13:26-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 19:13:26-debug: Skip compress image, progress: 0%
-26.03.2026 19:13:26-debug: Init all bundles start..., progress: 0%
-26.03.2026 19:13:26-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 19:13:26-debug: // ---- build task Query asset bundle ----
-26.03.2026 19:13:26-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 19:13:26-debug: Query asset bundle start, progress: 0%
-26.03.2026 19:13:26-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 19:13:26-debug:   Number of all scenes: 1
-26.03.2026 19:13:26-debug:   Number of other assets: 355
-26.03.2026 19:13:26-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 19:13:26-debug:   Number of all scripts: 21
-26.03.2026 19:13:26-debug: // ---- build task Query asset bundle ---- (7ms)
-26.03.2026 19:13:26-log: run build task Query asset bundle success in 7 ms√, progress: 5%
-26.03.2026 19:13:26-debug: // ---- build task Query asset bundle ----
-26.03.2026 19:13:26-debug: [Build Memory track]: Query asset bundle start:206.46MB, end 205.83MB, increase: -640.28KB
-26.03.2026 19:13:26-debug: Query asset bundle start, progress: 5%
-26.03.2026 19:13:26-debug: // ---- build task Query asset bundle ---- (3ms)
-26.03.2026 19:13:26-log: run build task Query asset bundle success in 3 ms√, progress: 10%
-26.03.2026 19:13:26-debug: [Build Memory track]: Query asset bundle start:205.86MB, end 205.94MB, increase: 86.89KB
-26.03.2026 19:13:26-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 19:13:26-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 19:13:26-log: run build task Sort some build options to settings.json success in √, progress: 12%
-26.03.2026 19:13:26-debug: [Build Memory track]: Sort some build options to settings.json start:205.97MB, end 205.99MB, increase: 17.58KB
-26.03.2026 19:13:26-debug: Fill script data to settings start, progress: 12%
-26.03.2026 19:13:26-debug: // ---- build task Fill script data to settings ----
-26.03.2026 19:13:26-debug: // ---- build task Fill script data to settings ---- (1ms)
-26.03.2026 19:13:26-log: run build task Fill script data to settings success in 1 ms√, progress: 13%
-26.03.2026 19:13:26-debug: [Build Memory track]: Fill script data to settings start:206.01MB, end 206.04MB, increase: 25.25KB
-26.03.2026 19:13:26-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 19:13:26-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 19:13:26-debug: // ---- build task Sort some build options to settings.json ---- (4ms)
-26.03.2026 19:13:26-log: run build task Sort some build options to settings.json success in 4 ms√, progress: 15%
-26.03.2026 19:13:26-debug: [Build Memory track]: Sort some build options to settings.json start:206.06MB, end 206.19MB, increase: 130.25KB
-26.03.2026 19:13:30-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:13:30-debug: asset-db:reimport-assetb12c6a05-5a89-4831-a2dd-99e5e31e1c01 (5ms)
-26.03.2026 19:13:30-debug: refresh db internal success
-26.03.2026 19:13:30-debug: refresh db assets success
-26.03.2026 19:13:30-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:13:30-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:13:30-debug: asset-db:refresh-all-database (113ms)
-26.03.2026 19:13:30-debug: asset-db:worker-effect-data-processing (1ms)
-26.03.2026 19:13:30-debug: asset-db-hook-engine-extends-afterRefresh (1ms)
-26.03.2026 19:36:49-debug: refresh db internal success
-26.03.2026 19:36:49-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:36:49-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:36:49-debug: refresh db assets success
-26.03.2026 19:36:49-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:36:49-debug: asset-db:refresh-all-database (165ms)
-26.03.2026 19:36:50-debug: recompile effect.bin success
-26.03.2026 19:36:50-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:36:50-debug: asset-db:worker-effect-data-processing (455ms)
-26.03.2026 19:36:50-debug: asset-db-hook-engine-extends-afterRefresh (455ms)
-26.03.2026 19:36:57-debug: start remove asset D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl...
-26.03.2026 19:36:57-debug: %cDestroy%c: D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtlbackground: #ffb8b8; color: #000;color: #000;
-26.03.2026 19:36:57-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl...
-26.03.2026 19:36:57-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 19:36:57-debug: remove asset D:\Dev\Games\gambling-mini-game\assets\materials\whell-glow.mtl success
-26.03.2026 19:36:57-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:36:57-debug: refresh db internal success
-26.03.2026 19:36:57-debug: refresh db assets success
-26.03.2026 19:36:57-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:36:57-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:36:57-debug: asset-db:refresh-all-database (153ms)
-26.03.2026 19:36:57-debug: asset-db:worker-effect-data-processing (22ms)
-26.03.2026 19:36:57-debug: asset-db-hook-engine-extends-afterRefresh (25ms)
-26.03.2026 19:37:02-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.effectbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:37:02-debug: asset-db:reimport-asset8265a641-645f-44a9-8b76-8fb572e8f2a9 (15ms)
-26.03.2026 19:37:03-debug: recompile effect.bin success
-26.03.2026 19:37:15-debug: start refresh asset from D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtl...
-26.03.2026 19:37:15-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:37:15-debug: refresh asset D:\Dev\Games\gambling-mini-game\assets\materials success
-26.03.2026 19:37:15-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materialsbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:37:22-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\scenes\Main.scenebackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:37:22-debug: asset-db:reimport-asset7c3b3c5a-08bc-4acd-a671-0609bb3d8341 (18ms)
-26.03.2026 19:37:23-debug: Query all assets info in project
-26.03.2026 19:37:23-debug: init custom config: keepNodeUuid: false, useCache: true
-26.03.2026 19:37:23-debug: Skip compress image, progress: 0%
-26.03.2026 19:37:23-debug: Init all bundles start..., progress: 0%
-26.03.2026 19:37:23-debug: Num of bundles: 2..., progress: 0%
-26.03.2026 19:37:23-debug: Query asset bundle start, progress: 0%
-26.03.2026 19:37:23-debug: Init bundle root assets start..., progress: 0%
-26.03.2026 19:37:23-debug: // ---- build task Query asset bundle ----
-26.03.2026 19:37:23-debug: Query preload assets/scripts from cc.config.json: 60f7195c-ec2a-45eb-ba94-8955f60e81d0,1c02ae6f-4492-4915-b8f8-7492a3b1e4cd,810e96e4-e456-4468-9b59-f4e8f39732c0,efe8e2a3-eace-427b-b4f1-cb8a937ec77d,e9aa9a3e-5b2b-4ac7-a2c7-073de2b2b24f,8bbdbcdd-5cd4-4100-b6d5-b7c9625b6107,50f4348b-c883-4e2f-8f11-ce233b859fa1,fda095cb-831d-4601-ad94-846013963de8,f92806d7-1768-443f-afe8-12bcde84d0f0,dd3a144d-ab7f-41f0-82b8-2e43a090d496,f0416e68-0200-4b77-a926-4f9d16e494da,970b0598-bcb0-4714-91fb-2e81440dccd8,bcd64cc6-2dd9-43f6-abbe-66318d332032,d930590d-bb92-4cc8-8bd1-23cd027f9edf,a3cd009f-0ab0-420d-9278-b9fdab939bbc,6a2d0734-bd9e-4ddf-946e-caa52498cb75,c27215d8-6835-4b68-bfbb-bdeac6100c04,b5d6115f-0370-4d7c-aad3-c194cc71cf98,871c3b6c-7379-419d-bda3-794b239ab90d,ff9b0199-ce04-4cfe-86cc-6c719f08d6e4,de1c2107-70c8-4021-8459-6399f24d01c6,cbf30902-517f-40dc-af90-a550bac27cf1
-26.03.2026 19:37:23-debug:   Number of all scenes: 1
-26.03.2026 19:37:23-debug:   Number of all scripts: 21
-26.03.2026 19:37:23-debug:   Number of other assets: 355
-26.03.2026 19:37:23-debug: Init bundle root assets success..., progress: 0%
-26.03.2026 19:37:23-debug: // ---- build task Query asset bundle ---- (12ms)
-26.03.2026 19:37:23-log: run build task Query asset bundle success in 12 ms√, progress: 5%
-26.03.2026 19:37:23-debug: [Build Memory track]: Query asset bundle start:209.74MB, end 209.49MB, increase: -257.93KB
-26.03.2026 19:37:23-debug: Query asset bundle start, progress: 5%
-26.03.2026 19:37:23-debug: // ---- build task Query asset bundle ----
-26.03.2026 19:37:23-debug: // ---- build task Query asset bundle ---- (5ms)
-26.03.2026 19:37:23-log: run build task Query asset bundle success in 5 ms√, progress: 10%
-26.03.2026 19:37:23-debug: [Build Memory track]: Query asset bundle start:209.51MB, end 209.61MB, increase: 97.14KB
-26.03.2026 19:37:23-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 19:37:23-debug: Sort some build options to settings.json start, progress: 10%
-26.03.2026 19:37:23-debug: // ---- build task Sort some build options to settings.json ---- (2ms)
-26.03.2026 19:37:23-log: run build task Sort some build options to settings.json success in 2 ms√, progress: 12%
-26.03.2026 19:37:23-debug: [Build Memory track]: Sort some build options to settings.json start:209.63MB, end 209.66MB, increase: 26.36KB
-26.03.2026 19:37:23-debug: Fill script data to settings start, progress: 12%
-26.03.2026 19:37:23-debug: // ---- build task Fill script data to settings ----
-26.03.2026 19:37:23-debug: // ---- build task Fill script data to settings ---- (4ms)
-26.03.2026 19:37:23-log: run build task Fill script data to settings success in 4 ms√, progress: 13%
-26.03.2026 19:37:23-debug: [Build Memory track]: Fill script data to settings start:209.69MB, end 209.71MB, increase: 25.83KB
-26.03.2026 19:37:23-debug: // ---- build task Sort some build options to settings.json ----
-26.03.2026 19:37:23-debug: Sort some build options to settings.json start, progress: 13%
-26.03.2026 19:37:23-debug: // ---- build task Sort some build options to settings.json ---- (7ms)
-26.03.2026 19:37:23-log: run build task Sort some build options to settings.json success in 7 ms√, progress: 15%
-26.03.2026 19:37:23-debug: [Build Memory track]: Sort some build options to settings.json start:209.74MB, end 209.87MB, increase: 135.29KB
-26.03.2026 19:37:24-debug: %cImport%c: D:\Dev\Games\gambling-mini-game\assets\materials\wheel-glow.mtlbackground: #aaff85; color: #000;color: #000;
-26.03.2026 19:37:24-debug: asset-db:reimport-asset7f962d7e-3f8d-480d-9cdd-101b58ac7d23 (5ms)
-26.03.2026 19:37:58-debug: refresh db internal success
-26.03.2026 19:37:58-debug: refresh db assets success
-26.03.2026 19:37:58-debug: Run asset db hook engine-extends:afterRefresh ...
-26.03.2026 19:37:58-debug: Run asset db hook engine-extends:afterRefresh success!
-26.03.2026 19:37:58-debug: asset-db:refresh-all-database (115ms)
-26.03.2026 19:37:58-debug: asset-db-hook-engine-extends-afterRefresh (2ms)
-26.03.2026 19:37:58-debug: asset-db:worker-effect-data-processing (2ms)

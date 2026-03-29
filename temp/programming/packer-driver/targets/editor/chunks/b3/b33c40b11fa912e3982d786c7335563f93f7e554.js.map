@@ -1,1 +1,0 @@
-{"version":3,"sources":["file:///D:/Dev/Games/gambling-mini-game/assets/scripts/strategies/ResultStrategy.ts"],"names":[],"mappings":";;;;;;;;;;;;;;;;;;;;AAMA","sourcesContent":["import { Bet } from '../data/Types';\r\n\r\nexport interface ResultStrategy {\r\n\tapply(balance: number, bet: Bet): number;\r\n\tgetReward(bet: Bet): number;\r\n}\r\n// Контракт\r\n"]}
